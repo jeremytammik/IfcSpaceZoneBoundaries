@@ -2,12 +2,18 @@
 
 Revit C# .NET add-in to retrieve IFC spaces and zones and their boundaries.
 
+Once tested and running, this add-in will be re-implemented as
+a [Forge Design Automation for Revit](https://thebuildingcoder.typepad.com/blog/2018/11/forge-design-automation-for-revit-at-au-and-in-public.html) app
+for use in the [final workflow](#workflow) described below.
+
 As described
 by [The Building Coder](https://thebuildingcoder.typepad.com) discussing
 how to [retrieve linked `IfcZone` elements using Python](https://thebuildingcoder.typepad.com/blog/2019/01/retrieving-linked-ifczone-elements-using-python.html),
 IFC rooms and zones are represented by `DirectShape` elements equipped with custom shared parameters.
 
 IfcSpaceZoneBoundaries retrieves the IFC rooms and zone elements and exports a CSV file listing them, their relationships and boundaries.
+
+## Room and Zone Properties
 
 Room properties:
 
@@ -27,6 +33,8 @@ Zone properties:
 - IfcPropertySetList = "Pset_ZoneCommon";"BI_Parameters"
 - IfcZone = 
 
+## CSV Export File Format
+
 CSV file format:
 
 - Space or Zone
@@ -43,6 +51,13 @@ CSV example for the room and zone properties listed above:
     Z, 2QZ$2QZ$T4_uPCWPddxgtStT7A, APT0102, , Pset_ZoneCommon;BI_Parameters, 11 23 11 69 -5 69 -5 11
 
 
+## <a name="workflow"></a>Sample Workflow
+
+- The Design Automation for Revit or *DA4R* app IfcSpaceZoneBoundaries is launched with an IFC file X to process plus a command file specifying configuration settings.
+- IfcSpaceZoneBoundaries creates a new blank Revit project Y.
+- X is linked into Y.
+- The resulting model is processed to obtain and export the data described above to an output CSV file Z.
+- Z is available from Forge.
 
 ## Author
 
