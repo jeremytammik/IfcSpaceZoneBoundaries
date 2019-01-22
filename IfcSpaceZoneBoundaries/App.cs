@@ -9,18 +9,18 @@ namespace IfcSpaceZoneBoundaries
 {
   class App : IExternalDBApplication
   {
+    void OnApplicationInitialized(
+      object sender,
+      ApplicationInitializedEventArgs e )
+    {
+      throw new NotImplementedException();
+    }
+
     public ExternalDBApplicationResult OnStartup( 
       ControlledApplication a )
     {
       a.ApplicationInitialized += OnApplicationInitialized;
       return ExternalDBApplicationResult.Succeeded;
-    }
-
-    private void OnApplicationInitialized( 
-      object sender, 
-      ApplicationInitializedEventArgs e )
-    {
-      throw new NotImplementedException();
     }
 
     public ExternalDBApplicationResult OnShutdown( 

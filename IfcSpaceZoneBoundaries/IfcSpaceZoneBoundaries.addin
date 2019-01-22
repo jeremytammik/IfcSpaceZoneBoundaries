@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
+  <AddIn Type="Command">
+    <Text>IFC Room and Zone Exporter</Text>
+    <Description>Export IFC rooms and zones,,their properties, relationships and boundaries to CSV.</Description>
+    <Assembly>IfcSpaceZoneBoundaries.dll</Assembly>
+    <FullClassName>IfcSpaceZoneBoundaries.Command</FullClassName>
+    <ClientId>8172a8cd-e400-4069-91dd-902d82180102</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
   <AddIn Type="DBApplication">
     <Name>IfcSpaceZoneBoundaries</Name>
     <Assembly>IfcSpaceZoneBoundaries.dll</Assembly>
@@ -7,10 +16,5 @@
     <ClientId>d66e95c8-b191-4a69-8937-c6dcd54ba623</ClientId>
     <VendorId>com.typepad.thebuildingcoder</VendorId>
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
-    <Description>
-      A Forge Design Automation app that retrieves IFC 
-      rooms and zones, their properties, relationships 
-      and boundaries.
-    </Description>
   </AddIn>
 </RevitAddIns>
