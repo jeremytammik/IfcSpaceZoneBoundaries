@@ -72,7 +72,7 @@ namespace IfcSpaceZoneBoundaries
         Zone = Util.GetStringParamValue( e, _pname_zone );
         Layer = Util.GetStringParamValue( e, _pname_layer );
         Pset = Util.GetStringParamValue( e, _pname_pset );
-        Boundary = null;
+        Boundary = Util.GetTopFaceBoundaryString( e );
       }
     }
 
