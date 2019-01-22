@@ -48,37 +48,12 @@ namespace IfcSpaceZoneBoundaries
     const string _format_string = "{0},{1},{2},{3},{4},{5},{6}";
 
     /// <summary>
-    /// Read a string property value from a name Revit
-    /// parameter. Used to read IFC properties from
-    /// shared parameters.
-    /// </summary>
-    static string GetStringParamValue(
-      Element e,
-      string pname )
-    {
-      IList<Parameter> ps = e.GetParameters( pname );
-
-      int n = ps.Count;
-
-      if( 1 < n )
-      {
-        throw new ArgumentException(
-          "expected maximum one parameter named "
-            + pname );
-      }
-
-      return ( 1 == n )
-        ? ps[0].AsString()
-        : null;
-    }
-
-    /// <summary>
     /// Instantiate a room or zone data object from
     /// a given Revit element `e`
     /// </summary>
     public RoomZoneData( Element e )
     {
-      string export_as = GetStringParamValue(
+      string export_as = Util.GetStringParamValue(
         e, _pname_export_as );
 
       if( export_as.Equals( _export_as_room ) )
@@ -92,11 +67,11 @@ namespace IfcSpaceZoneBoundaries
 
       if( IsRoomOrZone )
       {
-        GUID = GetStringParamValue( e, _pname_guid );
-        Name = GetStringParamValue( e, _pname_name );
-        Zone = GetStringParamValue( e, _pname_zone );
-        Layer = GetStringParamValue( e, _pname_layer );
-        Pset = GetStringParamValue( e, _pname_pset );
+        GUID = Util.GetStringParamValue( e, _pname_guid );
+        Name = Util.GetStringParamValue( e, _pname_name );
+        Zone = Util.GetStringParamValue( e, _pname_zone );
+        Layer = Util.GetStringParamValue( e, _pname_layer );
+        Pset = Util.GetStringParamValue( e, _pname_pset );
         Boundary = null;
       }
     }
