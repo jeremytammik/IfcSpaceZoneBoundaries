@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command IfcSpaceZoneBoundaries</Text>
+    <Description>Some description for IfcSpaceZoneBoundaries</Description>
+    <Assembly>IfcSpaceZoneBoundaries.dll</Assembly>
+    <FullClassName>IfcSpaceZoneBoundaries.Command</FullClassName>
+    <ClientId>4ec4e4d4-0d7d-45e9-9c5c-86cd7bbb220a</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application IfcSpaceZoneBoundaries</Name>
+    <Assembly>IfcSpaceZoneBoundaries.dll</Assembly>
+    <FullClassName>IfcSpaceZoneBoundaries.App</FullClassName>
+    <ClientId>d66e95c8-b191-4a69-8937-c6dcd54ba623</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
