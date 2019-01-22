@@ -55,7 +55,7 @@ CSV example for the room and zone properties listed above:
 
 - The Design Automation for Revit or *DA4R* app IfcSpaceZoneBoundaries is launched with an IFC file X to process plus a command file specifying configuration settings.
 - IfcSpaceZoneBoundaries creates a new blank Revit project Y.
-- X is linked into Y.
+- X is linked into Y to generate the room and zone objects.
 - The resulting model is processed to obtain and export the data described above to an output CSV file Z.
 - Z is available from Forge.
 
