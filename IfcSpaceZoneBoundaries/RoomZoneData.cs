@@ -6,8 +6,12 @@ namespace IfcSpaceZoneBoundaries
 {
   class RoomZoneData
   {
-    const string _format_string = "{0},{1},{2},{3},{4},{5},{6}";
-
+    /// <summary>
+    /// These are the data fields exported for each 
+    /// room and zone. The first is simply 'S' or 'Z'.
+    /// The zone and layer properties are only set 
+    /// on room object records.
+    /// </summary>
     public string Space_or_Zone;
     public string GUID;
     public string Name;
@@ -16,11 +20,18 @@ namespace IfcSpaceZoneBoundaries
     public string Pset;
     public string Boundary;
 
+    /// <summary>
+    /// Predicate indicating a valid room or zone
+    /// </summary>
     public bool IsRoomOrZone
     {
       get { return null != Space_or_Zone; }
     }
 
+    /// <summary>
+    /// Private constant strings for retrieving IFC
+    /// properties
+    /// </summary>
     const string _pname_export_as = "IfcExportAs";
     const string _pname_guid = "IfcGUID";
     const string _pname_name = "IfcName";
@@ -30,6 +41,17 @@ namespace IfcSpaceZoneBoundaries
     const string _export_as_room = "IfcSpace.INTERNAL";
     const string _export_as_zone = "Ifczone";
 
+    /// <summary>
+    /// Export CSV format using comma separated fields 
+    /// with no other delimiters
+    /// </summary>
+    const string _format_string = "{0},{1},{2},{3},{4},{5},{6}";
+
+    /// <summary>
+    /// Read a string property value from a name Revit
+    /// parameter. Used to read IFC properties from
+    /// shared parameters.
+    /// </summary>
     static string GetStringParamValue(
       Element e,
       string pname )
@@ -50,7 +72,10 @@ namespace IfcSpaceZoneBoundaries
         : null;
     }
 
-
+    /// <summary>
+    /// Instantiate a room or zone data object from
+    /// a given Revit element `e`
+    /// </summary>
     public RoomZoneData( Element e )
     {
       string export_as = GetStringParamValue(
@@ -76,6 +101,10 @@ namespace IfcSpaceZoneBoundaries
       }
     }
 
+    /// <summary>
+    /// Return a string to export room or zone data 
+    /// to CSV
+    /// </summary>
     public string AsString()
     {
       return string.Format( _format_string,

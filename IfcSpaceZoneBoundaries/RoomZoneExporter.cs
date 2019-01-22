@@ -8,7 +8,7 @@ namespace IfcSpaceZoneBoundaries
     public RoomZoneExporter( Document doc )
     {
       // IFC room and zones are represented by
-      // DirectShape elements.
+      // generic model direct shape elements.
 
       FilteredElementCollector col
         = new FilteredElementCollector( doc )
@@ -18,6 +18,7 @@ namespace IfcSpaceZoneBoundaries
       foreach( Element e in col )
       {
         RoomZoneData d = new RoomZoneData( e );
+
         if( d.IsRoomOrZone )
         {
           Debug.Print( d.AsString() );
