@@ -19,7 +19,7 @@ namespace IfcSpaceZoneBoundaries
       {
         RoomZoneData d = new RoomZoneData( e );
         if( d.IsRoomOrZone )
-        { 
+        {
           Debug.Print( d.AsString() );
         }
       }

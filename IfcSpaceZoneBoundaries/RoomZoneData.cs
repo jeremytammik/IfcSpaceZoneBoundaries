@@ -65,7 +65,7 @@ namespace IfcSpaceZoneBoundaries
         Space_or_Zone = "Z";
       }
 
-      if(IsRoomOrZone)
+      if( IsRoomOrZone )
       {
         GUID = GetStringParamValue( e, _pname_guid );
         Name = GetStringParamValue( e, _pname_name );
