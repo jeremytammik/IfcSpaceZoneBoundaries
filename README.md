@@ -29,18 +29,18 @@ Zone properties:
 
 CSV file format:
 
-Space or Zone
-GUID
-Name
-Zone
-Layer
-Property set sans quotes
-List of space separated boundary point XY coordinates in millimetres
+- Space or Zone
+- GUID
+- Name
+- Zone
+- Layer
+- Property set sans quotes
+- List of space separated boundary point XY coordinates in millimetres
 
 CSV example for the room and zone properties listed above:
 
-    S, 2QZ$T4_uPCWPddxgtStT47, CHA, APT0102, M-AREA-____-OTLN, Pset_SpaceCommon;BI_Parameters;BaseQuantities, 12
-    Z, 2QZ$2QZ$T4_uPCWPddxgtStT7A, APT0102, , Pset_ZoneCommon;BI_Parameters
+    S, 2QZ$T4_uPCWPddxgtStT47, CHA, APT0102, M-AREA-____-OTLN, Pset_SpaceCommon;BI_Parameters;BaseQuantities, 12 24 12 68 -4 68 -4 12
+    Z, 2QZ$2QZ$T4_uPCWPddxgtStT7A, APT0102, , Pset_ZoneCommon;BI_Parameters, 11 23 11 69 -5 69 -5 11
 
 
 
