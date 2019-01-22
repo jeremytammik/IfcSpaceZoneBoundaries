@@ -1,24 +1,32 @@
 #region Namespaces
 using System;
-using System.Collections.Generic;
 using Autodesk.Revit.ApplicationServices;
-using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
+using Autodesk.Revit.DB.Events;
 #endregion
 
 namespace IfcSpaceZoneBoundaries
 {
-  class App : IExternalApplication
+  class App : IExternalDBApplication
   {
-    public Result OnStartup( UIControlledApplication a )
+    public ExternalDBApplicationResult OnStartup( 
+      ControlledApplication a )
     {
-      return Result.Succeeded;
+      a.ApplicationInitialized += OnApplicationInitialized;
+      return ExternalDBApplicationResult.Succeeded;
     }
 
-    public Result OnShutdown( UIControlledApplication a )
+    private void OnApplicationInitialized( 
+      object sender, 
+      ApplicationInitializedEventArgs e )
     {
-      return Result.Succeeded;
+      throw new NotImplementedException();
+    }
+
+    public ExternalDBApplicationResult OnShutdown( 
+      ControlledApplication a )
+    {
+      return ExternalDBApplicationResult.Succeeded;
     }
   }
 }
