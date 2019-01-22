@@ -308,7 +308,7 @@ namespace IfcSpaceZoneBoundaries
     /// <summary>
     /// Return the topmost horizontal face, if found, or null
     /// </summary>
-    PlanarFace GetTopHorizontalFace( GeometryElement geo )
+    static PlanarFace GetTopHorizontalFace( GeometryElement geo )
     {
       PlanarFace top_face = null;
 
@@ -334,6 +334,12 @@ namespace IfcSpaceZoneBoundaries
       return top_face;
     }
 
+    static string GetXyBoundaryPointString( PlanarFace f )
+    {
+
+      return null;
+    }
+
     /// <summary>
     /// Return the XY coordinates of the top horizontal
     /// face of the given element, scaled to millimetres, 
@@ -344,8 +350,11 @@ namespace IfcSpaceZoneBoundaries
     {
       GeometryElement geo = e.get_Geometry( _geo_opt );
 
+      PlanarFace top_face = GetTopHorizontalFace( geo );
 
-      return null;
+      return null != top_face
+        ? GetXyBoundaryPointString(top_face)
+        : null;
     }
   }
 }
