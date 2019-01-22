@@ -11,7 +11,7 @@ using Autodesk.Revit.UI.Selection;
 
 namespace IfcSpaceZoneBoundaries
 {
-  [Transaction( TransactionMode.Manual )]
+  [Transaction( TransactionMode.ReadOnly )]
   public class Command : IExternalCommand
   {
     public Result Execute(
@@ -24,33 +24,17 @@ namespace IfcSpaceZoneBoundaries
       Application app = uiapp.Application;
       Document doc = uidoc.Document;
 
-      // Access current selection
-
-      Selection sel = uidoc.Selection;
-
-      // Retrieve elements from database
+      // IFC room and zones are represented by
+      // DirectShape elements.
 
       FilteredElementCollector col
         = new FilteredElementCollector( doc )
-          .WhereElementIsNotElementType()
-          .OfCategory( BuiltInCategory.INVALID )
-          .OfClass( typeof( Wall ) );
-
-      // Filtered element collector is iterable
+          .OfClass( typeof( DirectShape ) );
 
       foreach( Element e in col )
       {
         Debug.Print( e.Name );
       }
-
-      // Modify document within a transaction
-
-      using( Transaction tx = new Transaction( doc ) )
-      {
-        tx.Start( "Transaction Name" );
-        tx.Commit();
-      }
-
       return Result.Succeeded;
     }
   }
