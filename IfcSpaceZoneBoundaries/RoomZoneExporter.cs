@@ -49,7 +49,8 @@ namespace IfcSpaceZoneBoundaries
         if( export_as.Equals( _export_as_room )
           || export_as.Equals( _export_as_zone ) )
         {
-          Debug.Print( e.Name );
+          RoomZoneData d = new RoomZoneData( e );
+          Debug.Print( d.AsString() );
         }
       }
     }

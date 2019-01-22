@@ -24,6 +24,8 @@ namespace IfcSpaceZoneBoundaries
       Application app = uiapp.Application;
       Document doc = uidoc.Document;
 
+      RoomZoneExporter a = new RoomZoneExporter( doc );
+
       return Result.Succeeded;
     }
   }
