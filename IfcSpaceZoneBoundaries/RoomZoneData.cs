@@ -39,7 +39,7 @@ namespace IfcSpaceZoneBoundaries
     const string _pname_pset = "IfcPropertySetList";
     const string _pname_zone = "IfcZone";
     const string _export_as_room = "IfcSpace.INTERNAL";
-    const string _export_as_zone = "Ifczone";
+    const string _export_as_zone = "IfcZone";
 
     /// <summary>
     /// Export CSV format using comma separated fields 
