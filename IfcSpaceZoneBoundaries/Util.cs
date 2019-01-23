@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Autodesk.Revit.DB;
 using System.Diagnostics;
 
@@ -265,6 +266,8 @@ namespace IfcSpaceZoneBoundaries
     }
     #endregion // Geometrical Comparison
 
+    #region Unit Handling
+
     const double _inchToMm = 25.4;
     const double _footToMm = 12 * _inchToMm;
 
@@ -277,6 +280,7 @@ namespace IfcSpaceZoneBoundaries
       return (int) Math.Round( _footToMm * length,
         MidpointRounding.AwayFromZero );
     }
+    #endregion // Unit Handling
 
     /// <summary>
     /// Read a string property value from a name Revit
@@ -302,6 +306,8 @@ namespace IfcSpaceZoneBoundaries
         ? ps[0].AsString()
         : null;
     }
+
+    #region Geometry Extraction
 
     static Options _geo_opt = new Options();
 
@@ -334,10 +340,78 @@ namespace IfcSpaceZoneBoundaries
       return top_face;
     }
 
+    /// <summary>
+    /// Return the vertices from a face edge loop
+    /// </summary>
+    static List<XYZ> GetEdgeLoopVertices( 
+      EdgeArray loop )
+    {
+      if( 1 > loop.Size )
+      {
+        throw new ArgumentException( 
+          "empty top face loop" );
+      }
+
+      List<XYZ> vertices = new List<XYZ>();
+      XYZ p, q = XYZ.Zero;
+      bool first = true;
+      int i, n;
+
+      foreach( Edge e in loop )
+      {
+        IList<XYZ> points = e.Tessellate();
+        p = points[0];
+        if( !first )
+        {
+          Debug.Assert( p.IsAlmostEqualTo( q ),
+            "expected subsequent start point"
+            + " to equal previous end point" );
+        }
+        n = points.Count;
+        q = points[n - 1];
+        for( i = 0; i < n - 1; ++i )
+        {
+          vertices.Add( points[i] );
+        }
+      }
+
+      Debug.Assert( q.IsAlmostEqualTo( vertices[0] ),
+        "expected last end point to equal"
+        + " first start point" );
+
+      return vertices;
+    }
+
+    /// <summary>
+    /// Return the vertices from the first 
+    /// and only face edge loop
+    /// </summary>
+    static List<XYZ> GetFirstEdgeLoopVertices( 
+      PlanarFace f )
+    {
+      EdgeArrayArray loops = f.EdgeLoops;
+
+      int n = loops.Size;
+
+      if( 1 < n )
+      {
+        throw new ArgumentException( string.Format(
+          "top face has {0} loops; we only support one"
+            + n ) );
+      }
+
+      return GetEdgeLoopVertices( loops.get_Item( 0 ) );
+    }
+    #endregion // Geometry Extraction
+
     static string GetXyBoundaryPointString( PlanarFace f )
     {
+      List<XYZ> vertices = GetFirstEdgeLoopVertices( f ); 
 
-      return null;
+      return string.Join( " ",
+        vertices.Select<XYZ, string>( p
+          => new IntPoint2d( p.X, p.Y )
+            .ToString( true ) ) );
     }
 
     /// <summary>
