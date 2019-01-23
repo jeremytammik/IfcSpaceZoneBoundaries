@@ -24,7 +24,24 @@ namespace IfcSpaceZoneBoundaries
       Application app = uiapp.Application;
       Document doc = uidoc.Document;
 
-      RoomZoneExporter a = new RoomZoneExporter( doc );
+      // Access linked IFC document
+
+      Document ifcdoc = null;
+      DocumentSet docs = app.Documents;
+      int n = docs.Size;
+      Debug.Print( "{0} open documents", n );
+      foreach(Document d in docs)
+      {
+        string s = d.PathName;
+        if(s.EndsWith( ".ifc.RVT" ) )
+        {
+          ifcdoc = d;
+        }
+      }
+
+      Debug.Print( "Linked-in IFC document: " + ifcdoc.PathName );
+
+      RoomZoneExporter a = new RoomZoneExporter( ifcdoc );
 
       return Result.Succeeded;
     }
