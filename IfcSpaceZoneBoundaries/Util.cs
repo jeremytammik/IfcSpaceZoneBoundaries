@@ -395,9 +395,12 @@ namespace IfcSpaceZoneBoundaries
 
       if( 1 < n )
       {
-        throw new ArgumentException( string.Format(
-          "top face has {0} loops; we only support one"
-            + n ) );
+        Debug.Print( "top face has {0} loops; "
+          + "we only support one", n );
+
+        //throw new ArgumentException( string.Format(
+        //  "top face has {0} loops; we only support one",
+        //  n ) );
       }
 
       return GetEdgeLoopVertices( loops.get_Item( 0 ) );
