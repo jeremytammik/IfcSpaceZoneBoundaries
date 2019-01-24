@@ -42,8 +42,25 @@ namespace IfcSpaceZoneBoundaries
     }
   }
 
+  /// <summary>
+  /// Demonstrate defining input parameters 
+  /// for DA4R app via input parameter file
+  /// </summary>
   public class JtSettings : AppSettings<JtSettings>
   {
+    /// <summary>
+    /// Debug message level
+    /// </summary>
     public int DebugLevel = 3;
+
+    /// <summary>
+    /// Filter for specific level or floor
+    /// </summary>
+    public string LevelOrFloorRegex = "";
+
+    /// <summary>
+    /// Filter for specific zone
+    /// </summary>
+    public string ZoneRegex = "APT04.*"; // only fourth floor
   }
 }
