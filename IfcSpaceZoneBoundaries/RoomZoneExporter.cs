@@ -7,6 +7,8 @@ namespace IfcSpaceZoneBoundaries
   {
     public RoomZoneExporter( Document doc )
     {
+      Debug.Print( "Debug level {0}", App.Settings.DebugLevel );
+
       // IFC room and zones are represented by
       // generic model direct shape elements.
 
