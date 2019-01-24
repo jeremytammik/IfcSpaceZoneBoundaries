@@ -49,8 +49,8 @@ CSV file format:
 
 CSV example for the room and zone properties listed above:
 
-    S,2QZ$T4_uPCWPddxgtStT47,CHA,APT0102,M-AREA-____-OTLN,"Pset_SpaceCommon";"BI_Parameters";"BaseQuantities",664 -3532 664 -7080 3631 -7080 3631 -6073 4161 -6073 4161 -3532
-    Z,2QZ$T4_uPCWPddxgtStT7A,APT0102,,,"Pset_ZoneCommon";"BI_Parameters",6874 3932 6874 4417 6374 4417 6374 5167 4499 5167 4499 3932
+    S,2QZ$T4_uPCWPddxgtStT47,CHA,APT0102,M-AREA-____-OTLN,"Pset_SpaceCommon";"BI_Parameters";"BaseQuantities",5800,664 -3532 664 -7080 3631 -7080 3631 -6073 4161 -6073 4161 -3532
+    Z,2QZ$T4_uPCWPddxgtStT7A,APT0102,,,"Pset_ZoneCommon";"BI_Parameters",5800,6874 3932 6874 4417 6374 4417 6374 5167 4499 5167 4499 3932
 
 ## <a name="workflow"></a>Sample Workflow
 
