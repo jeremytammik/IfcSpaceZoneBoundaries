@@ -44,6 +44,7 @@ CSV file format:
 - Zone
 - Layer
 - Property set
+- Elevation Z coordinate
 - List of space separated boundary point XY coordinates in millimetres
 
 CSV example for the room and zone properties listed above:

@@ -407,10 +407,14 @@ namespace IfcSpaceZoneBoundaries
     }
     #endregion // Geometry Extraction
 
-    static string GetXyBoundaryPointString( PlanarFace f )
+    /// <summary>
+    /// Return a string listing the space-delimited X 
+    /// and Y coordinates converted from feet to millimetres 
+    /// from a list of XYZ vertices in imperial feet.
+    /// </summary>
+    static string XyzListTo2dPointString( 
+      List<XYZ> vertices )
     {
-      List<XYZ> vertices = GetFirstEdgeLoopVertices( f ); 
-
       return string.Join( " ",
         vertices.Select<XYZ, string>( p
           => new IntPoint2d( p.X, p.Y )
@@ -421,17 +425,29 @@ namespace IfcSpaceZoneBoundaries
     /// Return the XY coordinates of the top horizontal
     /// face of the given element, scaled to millimetres, 
     /// in a string of space-separated integer values.
+    /// Prepend the face's Z coordinate and a comma.
     /// </summary>
-    public static string GetTopFaceBoundaryString( 
+    public static string GetTopFaceBoundaryStringAndZ( 
       Element e )
     {
       GeometryElement geo = e.get_Geometry( _geo_opt );
 
       PlanarFace top_face = GetTopHorizontalFace( geo );
 
-      return null != top_face
-        ? GetXyBoundaryPointString(top_face)
-        : null;
+      string s = null;
+
+      if( null != top_face )
+      {
+        int z = Util.FootToMmInt( top_face.Origin.Z );
+
+        List<XYZ> vertices = GetFirstEdgeLoopVertices( 
+          top_face );
+
+        s = z.ToString() + ","
+          + XyzListTo2dPointString( vertices );
+      }
+
+      return s;
     }
   }
 }
