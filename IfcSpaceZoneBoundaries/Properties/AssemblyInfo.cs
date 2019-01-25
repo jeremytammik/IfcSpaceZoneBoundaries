@@ -32,5 +32,17 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion( "2019.0.0.0" )]
-[assembly: AssemblyFileVersion( "2019.0.0.0" )]
+//
+// History:
+//
+//
+// 2019-01-22 2019.0.0.0 initial wizard-generated add-in skeleton and project description
+// 2019-01-22 2019.0.0.1 implemented external DB app, RoomZoneExporter, RoomZoneData
+// 2019-01-23 2019.0.0.2 implemented top face boundary extraction
+// 2019-01-23 2019.0.0.3 successful csv export
+// 2019-01-24 2019.0.0.4 implemented GetTopFaceBoundaryStringAndZ and added elevation to CSV output
+// 2019-01-24 2019.0.0.5 implemented JtSettings for user input
+// 2019-01-24 2019.0.0.6 load and save settings on startup and shutdown
+//
+[assembly: AssemblyVersion( "2019.0.0.6" )]
+[assembly: AssemblyFileVersion( "2019.0.0.6" )]
