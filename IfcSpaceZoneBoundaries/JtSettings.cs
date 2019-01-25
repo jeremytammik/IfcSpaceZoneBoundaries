@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Web.Script.Serialization;
 
 namespace IfcSpaceZoneBoundaries
@@ -62,6 +63,9 @@ namespace IfcSpaceZoneBoundaries
     /// <returns></returns>
     public static JtSettings Load()
     {
+      Debug.Assert( null != _filename,
+        "did you forget to call Init?" );
+
       JtSettings settings = new JtSettings();
 
       if( File.Exists( _filename ) )

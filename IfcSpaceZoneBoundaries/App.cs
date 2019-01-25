@@ -52,11 +52,12 @@ namespace IfcSpaceZoneBoundaries
     public ExternalDBApplicationResult OnStartup( 
       ControlledApplication a )
     {
-      string path = Path.GetDirectoryName(
-        Assembly.GetExecutingAssembly().Location );
+      string path = Assembly.GetExecutingAssembly().Location;
 
       _logger = new JtLogger();
       _logger.Init( Path.ChangeExtension( path, "log" ) );
+
+      JtSettings.Init( Path.ChangeExtension( path, "config" ) );
       _settings = JtSettings.Load();
 
       a.ApplicationInitialized += OnApplicationInitialized;
@@ -66,9 +67,8 @@ namespace IfcSpaceZoneBoundaries
     public ExternalDBApplicationResult OnShutdown( 
       ControlledApplication a )
     {
-
       _settings.Save();
-
+      _logger.Done();
       return ExternalDBApplicationResult.Succeeded;
     }
   }

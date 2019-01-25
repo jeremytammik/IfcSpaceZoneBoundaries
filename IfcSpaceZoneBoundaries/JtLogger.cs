@@ -47,7 +47,7 @@ namespace IfcSpaceZoneBoundaries
     public void Log( string s )
     {
       string timestamp = DateTime.Now.ToString(
-        "HH:mm:ss.fff" );
+        "yyyy-MM-dd HH:mm:ss.fff" );
 
       _stream.WriteLine( timestamp + " " + s );
     }
