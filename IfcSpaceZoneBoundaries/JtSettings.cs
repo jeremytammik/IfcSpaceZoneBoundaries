@@ -6,52 +6,87 @@ namespace IfcSpaceZoneBoundaries
   // grabbed from http://stackoverflow.com/questions/453161/best-practice-to-save-application-settings-in-a-windows-forms-application
   public class AppSettings<T> where T : new()
   {
-    private const string _default_filename
-      = "RvtFader.json";
+    static string _filename;
 
-    public void Save(
-      string fileName = _default_filename )
+    public AppSettings( string filename )
     {
-      File.WriteAllText(
-        Path.Combine( App.Path, fileName ),
+      _filename = filename;
+    }
+
+    public void Save()
+    {
+      File.WriteAllText( _filename,
         ( new JavaScriptSerializer() ).Serialize(
           this ) );
     }
 
-    public static void Save(
-      T pSettings,
-      string fileName = _default_filename )
+    public static void Save( T pSettings )
     {
-      string path = Path.Combine( App.Path, fileName );
-      File.WriteAllText( path,
+      File.WriteAllText( _filename,
         ( new JavaScriptSerializer() ).Serialize(
           pSettings ) );
     }
 
-    public static T Load(
-      string fileName = _default_filename )
+    public static T Load()
     {
-      string path = Path.Combine( App.Path, fileName );
       T t = new T();
-      if( File.Exists( path ) )
+      if( File.Exists( _filename ) )
       {
         t = ( new JavaScriptSerializer() ).Deserialize<T>(
-          File.ReadAllText( path ) );
+          File.ReadAllText( _filename ) );
       }
       return t;
     }
   }
 
   /// <summary>
+  /// User defined settings class;
   /// Demonstrate defining input parameters 
   /// for DA4R app via input parameter file
   /// </summary>
-  public class JtSettings : AppSettings<JtSettings>
+  public class JtSettings
   {
+    static string _filename;
+
     /// <summary>
-    /// Debug message level
+    /// Initialise setting class with filename
     /// </summary>
-    public int DebugLevel = 3;
+    public static void Init( string filename )
+    {
+      _filename = filename;
+    }
+
+    /// <summary>
+    /// Load settings from file, if found
+    /// </summary>
+    /// <returns></returns>
+    public static JtSettings Load()
+    {
+      JtSettings settings = new JtSettings();
+
+      if( File.Exists( _filename ) )
+      {
+        settings = ( new JavaScriptSerializer() )
+          .Deserialize<JtSettings>(
+            File.ReadAllText( _filename ) );
+      }
+      return settings;
+    }
+
+    /// <summary>
+    /// Save current settings to file
+    /// </summary>
+    public void Save()
+    {
+      File.WriteAllText( _filename,
+        ( new JavaScriptSerializer() )
+          .Serialize( this ) );
+    }
+
+    /// <summary>
+    /// Log message level of detail
+    /// </summary>
+    public int LoggingLevel = 3;
 
     /// <summary>
     /// Filter for specific level or floor

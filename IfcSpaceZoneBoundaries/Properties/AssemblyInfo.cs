@@ -44,6 +44,7 @@ using System.Runtime.InteropServices;
 // 2019-01-24 2019.0.0.5 implemented JtSettings for user input
 // 2019-01-24 2019.0.0.6 load and save settings on startup and shutdown
 // 2019-01-25 2019.0.0.7 export bottom face boundary, not topmost
+// 2019-01-25 2019.0.0.8 implemented JtLogger
 //
-[assembly: AssemblyVersion( "2019.0.0.7" )]
-[assembly: AssemblyFileVersion( "2019.0.0.7" )]
+[assembly: AssemblyVersion( "2019.0.0.8" )]
+[assembly: AssemblyFileVersion( "2019.0.0.8" )]

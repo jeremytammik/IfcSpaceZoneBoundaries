@@ -1,5 +1,6 @@
 #region Namespaces
 using System;
+using System.IO;
 using System.Reflection;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.DB;
@@ -10,7 +11,13 @@ namespace IfcSpaceZoneBoundaries
 {
   class App : IExternalDBApplication
   {
+    static JtLogger _logger;
     static JtSettings _settings;
+
+    public static void Log( string msg )
+    {
+      _logger.Log( msg );
+    }
 
     /// <summary>
     /// Return the user-defined settings
@@ -23,17 +30,17 @@ namespace IfcSpaceZoneBoundaries
       }
     }
 
-    /// <summary>
-    /// Return the full add-in assembly folder path.
-    /// </summary>
-    public static string Path
-    {
-      get
-      {
-        return System.IO.Path.GetDirectoryName(
-          Assembly.GetExecutingAssembly().Location );
-      }
-    }
+    ///// <summary>
+    ///// Return the full add-in assembly folder path.
+    ///// </summary>
+    //public static string Path
+    //{
+    //  get
+    //  {
+    //    return System.IO.Path.GetDirectoryName(
+    //      Assembly.GetExecutingAssembly().Location );
+    //  }
+    //}
 
     void OnApplicationInitialized(
       object sender,
@@ -45,7 +52,13 @@ namespace IfcSpaceZoneBoundaries
     public ExternalDBApplicationResult OnStartup( 
       ControlledApplication a )
     {
+      string path = Path.GetDirectoryName(
+        Assembly.GetExecutingAssembly().Location );
+
+      _logger = new JtLogger();
+      _logger.Init( Path.ChangeExtension( path, "log" ) );
       _settings = JtSettings.Load();
+
       a.ApplicationInitialized += OnApplicationInitialized;
       return ExternalDBApplicationResult.Succeeded;
     }
@@ -53,6 +66,7 @@ namespace IfcSpaceZoneBoundaries
     public ExternalDBApplicationResult OnShutdown( 
       ControlledApplication a )
     {
+
       _settings.Save();
 
       return ExternalDBApplicationResult.Succeeded;
