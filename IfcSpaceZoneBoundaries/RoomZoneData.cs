@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 
 namespace IfcSpaceZoneBoundaries
 {
@@ -18,6 +16,7 @@ namespace IfcSpaceZoneBoundaries
     public string Zone;
     public string Layer;
     public string Pset;
+    public string Z;
     public string Boundary;
 
     /// <summary>
@@ -45,7 +44,7 @@ namespace IfcSpaceZoneBoundaries
     /// Export CSV format using comma separated fields 
     /// with no other delimiters
     /// </summary>
-    const string _format_string = "{0},{1},{2},{3},{4},{5},{6}";
+    const string _format_string = "{0},{1},{2},{3},{4},{5},{6},{7}";
 
     /// <summary>
     /// Instantiate a room or zone data object from
@@ -72,7 +71,7 @@ namespace IfcSpaceZoneBoundaries
         Zone = Util.GetStringParamValue( e, _pname_zone );
         Layer = Util.GetStringParamValue( e, _pname_layer );
         Pset = Util.GetStringParamValue( e, _pname_pset );
-        Boundary = Util.GetTopFaceBoundaryStringAndZ( e );
+        Boundary = Util.GetBottomFaceBoundaryStringAndZ( e, out Z );
       }
     }
 
@@ -89,6 +88,7 @@ namespace IfcSpaceZoneBoundaries
         Zone,
         Layer,
         Pset,
+        Z,
         Boundary );
     }
   }

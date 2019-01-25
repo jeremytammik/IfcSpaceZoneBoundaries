@@ -62,6 +62,7 @@ CSV example for the room and zone properties listed above:
 
 ## To Do
 
+- Implement real export to CSV, not just logging to debug console
 - Implement creation of new RVT from scratch and linking in IFC file
 - Implement log file
 - Convert to DA4R

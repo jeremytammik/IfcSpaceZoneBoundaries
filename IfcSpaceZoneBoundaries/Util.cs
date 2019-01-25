@@ -312,11 +312,12 @@ namespace IfcSpaceZoneBoundaries
     static Options _geo_opt = new Options();
 
     /// <summary>
-    /// Return the topmost horizontal face, if found, or null
+    /// Return the bottom horizontal face, if found, or null
     /// </summary>
-    static PlanarFace GetTopHorizontalFace( GeometryElement geo )
+    static PlanarFace GetBottomHorizontalFace( 
+      GeometryElement geo )
     {
-      PlanarFace top_face = null;
+      PlanarFace bottom_face = null;
 
       foreach( GeometryObject obj in geo )
       {
@@ -330,14 +331,15 @@ namespace IfcSpaceZoneBoundaries
 
             if( null != pf
               && IsHorizontal( pf )
-              && (null == top_face || top_face.Origin.Z < pf.Origin.Z ) )
+              && (null == bottom_face 
+                || bottom_face.Origin.Z > pf.Origin.Z ) )
             {
-              top_face = pf;
+              bottom_face = pf;
             }
           }
         }
       }
-      return top_face;
+      return bottom_face;
     }
 
     /// <summary>
@@ -427,26 +429,26 @@ namespace IfcSpaceZoneBoundaries
     /// in a string of space-separated integer values.
     /// Prepend the face's Z coordinate and a comma.
     /// </summary>
-    public static string GetTopFaceBoundaryStringAndZ( 
-      Element e )
+    public static string GetBottomFaceBoundaryStringAndZ( 
+      Element e,
+      out string Z )
     {
       GeometryElement geo = e.get_Geometry( _geo_opt );
 
-      PlanarFace top_face = GetTopHorizontalFace( geo );
+      PlanarFace bottom_face = GetBottomHorizontalFace( geo );
 
-      string s = null;
+      string s = Z = null;
 
-      if( null != top_face )
+      if( null != bottom_face )
       {
-        int z = Util.FootToMmInt( top_face.Origin.Z );
+        Z = Util.FootToMmInt( bottom_face.Origin.Z )
+          .ToString();
 
         List<XYZ> vertices = GetFirstEdgeLoopVertices( 
-          top_face );
+          bottom_face );
 
-        s = z.ToString() + ","
-          + XyzListTo2dPointString( vertices );
+        s = XyzListTo2dPointString( vertices );
       }
-
       return s;
     }
   }

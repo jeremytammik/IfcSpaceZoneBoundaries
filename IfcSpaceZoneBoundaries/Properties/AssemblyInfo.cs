@@ -43,6 +43,7 @@ using System.Runtime.InteropServices;
 // 2019-01-24 2019.0.0.4 implemented GetTopFaceBoundaryStringAndZ and added elevation to CSV output
 // 2019-01-24 2019.0.0.5 implemented JtSettings for user input
 // 2019-01-24 2019.0.0.6 load and save settings on startup and shutdown
+// 2019-01-25 2019.0.0.7 export bottom face boundary, not topmost
 //
-[assembly: AssemblyVersion( "2019.0.0.6" )]
-[assembly: AssemblyFileVersion( "2019.0.0.6" )]
+[assembly: AssemblyVersion( "2019.0.0.7" )]
+[assembly: AssemblyFileVersion( "2019.0.0.7" )]
