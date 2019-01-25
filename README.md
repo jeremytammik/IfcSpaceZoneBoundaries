@@ -60,6 +60,13 @@ CSV example for the room and zone properties listed above:
 - The resulting model is processed to obtain and export the data described above to an output CSV file Z.
 - Z is available from Forge.
 
+## To Do
+
+- Implement creation of new RVT from scratch and linking in IFC file
+- Implement log file
+- Convert to DA4R
+
+
 ## Author
 
 Jeremy Tammik,
