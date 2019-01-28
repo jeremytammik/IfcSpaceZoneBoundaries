@@ -29,7 +29,7 @@ namespace IfcSpaceZoneBoundaries
       Document ifcdoc = null;
       DocumentSet docs = app.Documents;
       int n = docs.Size;
-      Debug.Print( "{0} open documents", n );
+      App.Log( string.Format( "{0} open documents", n ) );
       foreach(Document d in docs)
       {
         string s = d.PathName;
@@ -39,7 +39,7 @@ namespace IfcSpaceZoneBoundaries
         }
       }
 
-      Debug.Print( "Linked-in IFC document: " + ifcdoc.PathName );
+      App.Log( "Linked-in IFC document: " + ifcdoc.PathName );
 
       RoomZoneExporter a = new RoomZoneExporter( ifcdoc );
 

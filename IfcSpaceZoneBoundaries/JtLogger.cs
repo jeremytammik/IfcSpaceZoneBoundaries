@@ -46,6 +46,8 @@ namespace IfcSpaceZoneBoundaries
     /// <param name="s"></param>
     public void Log( string s )
     {
+      Debug.Print( s );
+
       string timestamp = DateTime.Now.ToString(
         "yyyy-MM-dd HH:mm:ss.fff" );
 

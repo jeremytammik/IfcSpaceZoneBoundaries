@@ -397,8 +397,8 @@ namespace IfcSpaceZoneBoundaries
 
       if( 1 < n )
       {
-        Debug.Print( "top face has {0} loops; "
-          + "we only support one", n );
+        App.Log( string.Format( "top face has {0} "
+          + "loops; we only support one", n ) );
 
         //throw new ArgumentException( string.Format(
         //  "top face has {0} loops; we only support one",
