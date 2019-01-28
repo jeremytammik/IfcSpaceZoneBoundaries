@@ -47,6 +47,7 @@ using System.Runtime.InteropServices;
 // 2019-01-25 2019.0.0.8 implemented JtLogger
 // 2019-01-28 2019.0.0.9 implemented direct csv file output
 // 2019-01-28 2019.0.0.10 convert all messages to log file entries
+// 2019-01-28 2019.0.0.11 implemented GetLinkedInIfcDoc
 //
-[assembly: AssemblyVersion( "2019.0.0.10" )]
-[assembly: AssemblyFileVersion( "2019.0.0.10" )]
+[assembly: AssemblyVersion( "2019.0.0.11" )]
+[assembly: AssemblyFileVersion( "2019.0.0.11" )]
