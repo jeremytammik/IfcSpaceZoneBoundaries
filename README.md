@@ -66,7 +66,11 @@ I thought the process of linking in the IFC file would be pretty straightforward
 the [`CreateFromIFC` method documentation](https://apidocs.co/apps/revit/2019/5b944368-4ce5-d523-5fd5-29d0363861ae.htm),
 it is probably not completely trivial. It says:
 
-> This function is one of a series of steps necessary for linking an IFC file. To understand how it is used in context, please download the IFC open source code, and look in the Revit.IFC.Import project at Importer.ImportIFC(ImporterIFC importer), under the IFCImportAction.Link branch.
+> This function is one of a series of steps necessary for linking an IFC file.
+To understand how it is used in context, please download the [IFC open source code](https://github.com/Autodesk/revit-ifc),
+and look in the [Revit.IFC.Import project](https://github.com/Autodesk/revit-ifc/tree/master/Source/Revit.IFC.Import)
+at [Importer.ImportIFC(ImporterIFC importer)](https://github.com/Autodesk/revit-ifc/blob/master/Source/Revit.IFC.Import/Importer.cs),
+under the IFCImportAction.Link branch.
 
 
 ## <a name="todo"></a>To Do
