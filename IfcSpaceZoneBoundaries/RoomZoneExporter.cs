@@ -6,7 +6,12 @@ namespace IfcSpaceZoneBoundaries
 {
   class RoomZoneExporter
   {
-    public RoomZoneExporter( Document doc )
+    /// <summary>
+    /// Retrieve the rooms and areas, i.e., the spaces
+    /// and zones, from the linked-in IFC document.
+    /// </summary>
+    /// <param name="ifcdoc">Linked-in IFC document</param>
+    public RoomZoneExporter( Document ifcdoc )
     {
       App.Log( string.Format( "Logging level {0}", 
         App.Settings.LoggingLevel ) );
@@ -15,12 +20,12 @@ namespace IfcSpaceZoneBoundaries
       // generic model direct shape elements.
 
       FilteredElementCollector col
-        = new FilteredElementCollector( doc )
+        = new FilteredElementCollector( ifcdoc )
           .OfClass( typeof( DirectShape ) )
           .OfCategory( BuiltInCategory.OST_GenericModel );
 
       string path = Path.ChangeExtension(
-        doc.PathName, "csv" );
+        ifcdoc.PathName, "csv" );
 
       App.Log( string.Format( 
         "Writing {0} zones and spaces to {1}.",

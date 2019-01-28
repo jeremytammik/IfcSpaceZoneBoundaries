@@ -60,6 +60,15 @@ CSV example for the room and zone properties listed above:
 - The resulting model is processed to obtain and export the data described above to an output CSV file Z.
 - Z is available from Forge.
 
+## Linking in the IFC File
+
+I thought the process of linking in the IFC file would be pretty straightforward. However, looking more closely at
+the [`CreateFromIFC` method documentation](https://apidocs.co/apps/revit/2019/5b944368-4ce5-d523-5fd5-29d0363861ae.htm),
+it is probably not completely trivial. It says:
+
+> This function is one of a series of steps necessary for linking an IFC file. To understand how it is used in context, please download the IFC open source code, and look in the Revit.IFC.Import project at Importer.ImportIFC(ImporterIFC importer), under the IFCImportAction.Link branch.
+
+
 ## <a name="todo"></a>To Do
 
 - Implement creation of new RVT from scratch and linking in IFC file
