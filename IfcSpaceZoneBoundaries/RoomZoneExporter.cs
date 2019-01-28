@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Autodesk.Revit.DB;
+using System.IO;
 
 namespace IfcSpaceZoneBoundaries
 {
@@ -17,14 +18,26 @@ namespace IfcSpaceZoneBoundaries
           .OfClass( typeof( DirectShape ) )
           .OfCategory( BuiltInCategory.OST_GenericModel );
 
-      foreach( Element e in col )
-      {
-        RoomZoneData d = new RoomZoneData( e );
+      string path = Path.ChangeExtension(
+        doc.PathName, "csv" );
 
-        if( d.IsRoomOrZone )
+      App.Log( string.Format( 
+        "Writing {0} zones and spaces to {1}.",
+        col.GetElementCount(), path ) );
+
+      using( StreamWriter csv_out 
+        = new StreamWriter( path ) )
+      {
+        foreach( Element e in col )
         {
-          Debug.Print( d.AsString() );
+          RoomZoneData d = new RoomZoneData( e );
+
+          if( d.IsRoomOrZone )
+          {
+            csv_out.WriteLine( d.AsString() );
+          }
         }
+        csv_out.Close();
       }
     }
   }
