@@ -88,6 +88,14 @@ namespace IfcSpaceZoneBoundaries
     }
 
     /// <summary>
+    /// If no IFC file has yet been linked in to the 
+    /// current project, link this one in.
+    /// </summary>
+    public string IfcInputFilePath 
+      = "Z:/a/special/bouygues/2019_bim_surface_info/test/02"
+      + "/010-123xx3-arc-bat01-apt01_2_2018-12-27_1507.ifc";
+
+    /// <summary>
     /// Log message level of detail
     /// </summary>
     public int LoggingLevel = 3;

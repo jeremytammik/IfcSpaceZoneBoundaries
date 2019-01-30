@@ -57,7 +57,7 @@ namespace IfcSpaceZoneBoundaries
       _logger = new JtLogger();
       _logger.Init( Path.ChangeExtension( path, "log" ) );
 
-      JtSettings.Init( Path.ChangeExtension( path, "config" ) );
+      JtSettings.Init( Path.ChangeExtension( path, "settings" ) );
       _settings = JtSettings.Load();
 
       a.ApplicationInitialized += OnApplicationInitialized;

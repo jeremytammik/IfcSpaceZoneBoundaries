@@ -50,6 +50,7 @@ using System.Runtime.InteropServices;
 // 2019-01-28 2019.0.0.11 implemented GetLinkedInIfcDoc
 // 2019-01-28 2019.0.0.12 successful test of logging and direct csv output
 // 2019-01-30 2019.0.0.13 implemented CreateIfcLink
+// 2019-01-30 2019.0.0.13 implemented JtSettings.IfcInputFilePath
 //
 [assembly: AssemblyVersion( "2019.0.0.13" )]
 [assembly: AssemblyFileVersion( "2019.0.0.13" )]

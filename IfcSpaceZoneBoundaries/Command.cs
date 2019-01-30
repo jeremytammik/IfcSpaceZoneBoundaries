@@ -16,14 +16,6 @@ namespace IfcSpaceZoneBoundaries
   public class Command : IExternalCommand
   {
     /// <summary>
-    /// If no IFC file has yet been linked in to the 
-    /// current project, link this one in.
-    /// </summary>
-    string _ifc_path = 
-      "Z:/a/special/bouygues/2019_bim_surface_info/test/02"
-      + "/010-123xx3-arc-bat01-apt01_2_2018-12-27_1507.ifc";
-
-    /// <summary>
     /// Create a link to a given IFC file.
     /// Return true on success.
     /// </summary>
@@ -100,7 +92,9 @@ namespace IfcSpaceZoneBoundaries
 
       if( null == ifcdoc )
       {
-        if( CreateIfcLink( doc, _ifc_path ) )
+        string path = App.Settings.IfcInputFilePath;
+
+        if( CreateIfcLink( doc, path ) )
         {
           ifcdoc = GetLinkedInIfcDoc( app );
         }
