@@ -49,6 +49,7 @@ using System.Runtime.InteropServices;
 // 2019-01-28 2019.0.0.10 convert all messages to log file entries
 // 2019-01-28 2019.0.0.11 implemented GetLinkedInIfcDoc
 // 2019-01-28 2019.0.0.12 successful test of logging and direct csv output
+// 2019-01-30 2019.0.0.13 implemented CreateIfcLink
 //
-[assembly: AssemblyVersion( "2019.0.0.12" )]
-[assembly: AssemblyFileVersion( "2019.0.0.12" )]
+[assembly: AssemblyVersion( "2019.0.0.13" )]
+[assembly: AssemblyFileVersion( "2019.0.0.13" )]

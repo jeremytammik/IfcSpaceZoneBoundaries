@@ -1,9 +1,13 @@
 #region Namespaces
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using Revit.IFC.Import;
+using Revit.IFC.Import.Data;
 #endregion
 
 namespace IfcSpaceZoneBoundaries
@@ -11,6 +15,54 @@ namespace IfcSpaceZoneBoundaries
   [Transaction( TransactionMode.ReadOnly )]
   public class Command : IExternalCommand
   {
+    /// <summary>
+    /// If no IFC file has yet been linked in to the 
+    /// current project, link this one in.
+    /// </summary>
+    string _ifc_path = 
+      "Z:/a/special/bouygues/2019_bim_surface_info/test/02"
+      + "/010-123xx3-arc-bat01-apt01_2_2018-12-27_1507.ifc";
+
+    /// <summary>
+    /// Create a link to a given IFC file.
+    /// Return true on success.
+    /// </summary>
+    bool CreateIfcLink( 
+      Document doc, 
+      string ifcpath )
+    {
+      bool rc = false;
+
+      IDictionary<string, string> options
+        = new Dictionary<string, string>( 2 );
+
+      options["Action"] = "Link"; // default is "Open"
+      options["Intent"] = "Reference"; // this is the default
+
+      Importer importer = Importer.CreateImporter( 
+        doc, ifcpath, options );
+
+      try
+      {
+        importer.ReferenceIFC( doc, ifcpath, options );
+        rc = true;
+      }
+      catch( Exception ex )
+      {
+        if( null != Importer.TheLog )
+          Importer.TheLog.LogError( 
+            -1, ex.Message, false );
+      }
+      finally
+      {
+        if( null != Importer.TheLog )
+          Importer.TheLog.Close();
+        if( null != IFCImportFile.TheFile )
+          IFCImportFile.TheFile.Close();
+      }
+      return rc;
+    }
+
     /// <summary>
     /// Retrieve and return the first linked-in 
     /// IFC document, if any is found.
@@ -48,15 +100,17 @@ namespace IfcSpaceZoneBoundaries
 
       if( null == ifcdoc )
       {
-        Debug.Assert( false, "not yet implemented" );
-        // todo: create new RVT and link in IFC here
-
-        ifcdoc = GetLinkedInIfcDoc( app );
+        if( CreateIfcLink( doc, _ifc_path ) )
+        {
+          ifcdoc = GetLinkedInIfcDoc( app );
+        }
       }
 
-      App.Log( "Linked-in IFC document: " + ifcdoc.PathName );
+      App.Log( "Linked-in IFC document: " 
+        + ifcdoc.PathName );
 
-      RoomZoneExporter a = new RoomZoneExporter( ifcdoc );
+      RoomZoneExporter a = new RoomZoneExporter( 
+        ifcdoc );
 
       return Result.Succeeded;
     }
