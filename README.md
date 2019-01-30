@@ -123,7 +123,7 @@ However, the `.ifc.RVT` file can presumably be uploaded to Forge and processed b
 
 ## <a name="todo"></a>To Do
 
-- Implement creation of new RVT from scratch and linking in IFC file
+- Test reading the data directly from the intermediate `.ifc.RVT` file
 - Convert to DA4R
 
 
