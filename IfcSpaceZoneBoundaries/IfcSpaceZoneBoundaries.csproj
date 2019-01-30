@@ -74,6 +74,9 @@
   <ItemGroup>
     <Content Include="IfcSpaceZoneBoundaries.addin" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="IfcSpaceZoneBoundaries.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if exist "$(AppData)\Autodesk\REVIT\Addins\2019" copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2019"

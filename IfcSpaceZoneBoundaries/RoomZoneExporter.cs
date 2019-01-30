@@ -49,10 +49,8 @@ namespace IfcSpaceZoneBoundaries
         csv_out.Close();
       }
       App.Log( string.Format(
-        "{0} zones and spaces  written to {1}.",
+        "{0} zones and spaces written to {1}.",
         n, path ) );
-
-
     }
   }
 }

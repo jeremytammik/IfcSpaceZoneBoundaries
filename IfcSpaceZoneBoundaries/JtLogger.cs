@@ -36,6 +36,7 @@ namespace IfcSpaceZoneBoundaries
 
       _filename = filepath;
       _stream = new StreamWriter( _filename );
+      _stream.AutoFlush = true;
       Log( "Log file begin" );
       return true;
     }

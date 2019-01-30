@@ -51,6 +51,9 @@ using System.Runtime.InteropServices;
 // 2019-01-28 2019.0.0.12 successful test of logging and direct csv output
 // 2019-01-30 2019.0.0.13 implemented CreateIfcLink
 // 2019-01-30 2019.0.0.13 implemented JtSettings.IfcInputFilePath
+// 2019-01-30 2019.0.0.13 changed settings filename extension to 'json'
+// 2019-01-30 2019.0.0.13 change command to manual transaction mode for IFC import
+// 2019-01-30 2019.0.0.13 added AutoFlush to logging stream
 //
 [assembly: AssemblyVersion( "2019.0.0.13" )]
 [assembly: AssemblyFileVersion( "2019.0.0.13" )]

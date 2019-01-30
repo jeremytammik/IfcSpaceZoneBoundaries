@@ -12,7 +12,7 @@ using Revit.IFC.Import.Data;
 
 namespace IfcSpaceZoneBoundaries
 {
-  [Transaction( TransactionMode.ReadOnly )]
+  [Transaction( TransactionMode.Manual )]
   public class Command : IExternalCommand
   {
     /// <summary>
@@ -85,6 +85,7 @@ namespace IfcSpaceZoneBoundaries
       UIDocument uidoc = uiapp.ActiveUIDocument;
       Application app = uiapp.Application;
       Document doc = uidoc.Document;
+      Result rc = Result.Failed;
 
       // Access linked-in IFC document
 
@@ -100,13 +101,21 @@ namespace IfcSpaceZoneBoundaries
         }
       }
 
-      App.Log( "Linked-in IFC document: " 
-        + ifcdoc.PathName );
+      if( null == ifcdoc )
+      {
+        App.Log( "No linked-in IFC document found." );
+      }
+      else
+      {
+        App.Log( "Linked-in IFC document: "
+          + ifcdoc.PathName );
 
-      RoomZoneExporter a = new RoomZoneExporter( 
-        ifcdoc );
+        RoomZoneExporter a = new RoomZoneExporter(
+          ifcdoc );
 
-      return Result.Succeeded;
+        rc = Result.Succeeded;
+      }
+      return rc;
     }
   }
 }
