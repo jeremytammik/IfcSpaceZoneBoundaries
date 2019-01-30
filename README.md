@@ -72,6 +72,54 @@ and look in the [Revit.IFC.Import project](https://github.com/Autodesk/revit-ifc
 at [Importer.ImportIFC(ImporterIFC importer)](https://github.com/Autodesk/revit-ifc/blob/master/Source/Revit.IFC.Import/Importer.cs),
 under the IFCImportAction.Link branch.
 
+Based on this information and private communication with Angel Velez, I implemented the method `CreateIfcLink` to successfully link in an IFC file into a blank RVT project:
+
+    /// <summary>
+    /// Create a link to a given IFC file.
+    /// Return true on success.
+    /// </summary>
+    bool CreateIfcLink( 
+      Document doc, 
+      string ifcpath )
+    {
+      bool rc = false;
+
+      IDictionary<string, string> options
+        = new Dictionary<string, string>( 2 );
+
+      options["Action"] = "Link"; // default is "Open"
+      options["Intent"] = "Reference"; // this is the default
+
+      Importer importer = Importer.CreateImporter( 
+        doc, ifcpath, options );
+
+      try
+      {
+        importer.ReferenceIFC( doc, ifcpath, options );
+        rc = true;
+      }
+      catch( Exception ex )
+      {
+        if( null != Importer.TheLog )
+          Importer.TheLog.LogError( 
+            -1, ex.Message, false );
+      }
+      finally
+      {
+        if( null != Importer.TheLog )
+          Importer.TheLog.Close();
+        if( null != IFCImportFile.TheFile )
+          IFCImportFile.TheFile.Close();
+      }
+      return rc;
+    }
+
+This process creates an intermediate file with a filename extension `.ifc.RVT`.
+
+Apparently, DA4R currently does not support IFC processing, so the call to this method may have to be moved to the desktop.
+
+However, the `.ifc.RVT` file can presumably be uploaded to Forge and processed by DA4R.
+
 
 ## <a name="todo"></a>To Do
 
