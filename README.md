@@ -114,6 +114,8 @@ Based on this information and private communication with Angel Velez, I implemen
       return rc;
     }
 
+It requires references to the `RevitAPIIFC` and `Revit.IFC.Import` .NET assemblies.
+
 This process creates an intermediate file with a filename extension `.ifc.RVT`.
 
 Apparently, DA4R currently does not support IFC processing, so the call to this method may have to be moved to the desktop.
