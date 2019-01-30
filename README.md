@@ -60,7 +60,7 @@ CSV example for the room and zone properties listed above:
 - The resulting model is processed to obtain and export the data described above to an output CSV file Z.
 - Z is available from Forge.
 
-## Linking in the IFC File
+## <a name="linking"></a>Linking in the IFC File
 
 I thought the process of linking in the IFC file would be pretty straightforward. However, looking more closely at
 the [`CreateFromIFC` method documentation](https://apidocs.co/apps/revit/2019/5b944368-4ce5-d523-5fd5-29d0363861ae.htm),
