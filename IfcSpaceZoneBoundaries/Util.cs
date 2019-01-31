@@ -283,6 +283,16 @@ namespace IfcSpaceZoneBoundaries
     #endregion // Unit Handling
 
     /// <summary>
+    /// Return an English plural suffix for the given
+    /// number of items, i.e. 's' for zero or more
+    /// than one, and nothing for exactly one.
+    /// </summary>
+    public static string PluralSuffix( int n )
+    {
+      return 1 == n ? "" : "s";
+    }
+
+    /// <summary>
     /// Read a string property value from a name Revit
     /// parameter. Used to read IFC properties from
     /// shared parameters.

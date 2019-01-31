@@ -19,8 +19,8 @@ namespace IfcSpaceZoneBoundaries
     /// Create a link to a given IFC file.
     /// Return true on success.
     /// </summary>
-    bool CreateIfcLink( 
-      Document doc, 
+    bool CreateIfcLink(
+      Document doc,
       string ifcpath )
     {
       bool rc = false;
@@ -31,7 +31,7 @@ namespace IfcSpaceZoneBoundaries
       options["Action"] = "Link"; // default is "Open"
       options["Intent"] = "Reference"; // this is the default
 
-      Importer importer = Importer.CreateImporter( 
+      Importer importer = Importer.CreateImporter(
         doc, ifcpath, options );
 
       try
@@ -42,7 +42,7 @@ namespace IfcSpaceZoneBoundaries
       catch( Exception ex )
       {
         if( null != Importer.TheLog )
-          Importer.TheLog.LogError( 
+          Importer.TheLog.LogError(
             -1, ex.Message, false );
       }
       finally
@@ -56,24 +56,30 @@ namespace IfcSpaceZoneBoundaries
     }
 
     /// <summary>
-    /// Retrieve and return the first linked-in 
-    /// IFC document, if any is found.
+    /// Retrieve and return all linked-in IFC documents.
     /// </summary>
-    Document GetLinkedInIfcDoc( Application app )
+    List<Document> GetLinkedInIfcDocs( Application app )
     {
-      Document ifcdoc = null;
+      List<Document> ifcdocs = null;
       DocumentSet docs = app.Documents;
       int n = docs.Size;
-      App.Log( string.Format( "{0} open documents", n ) );
+
+      App.Log( string.Format( "{0} open document{1}",
+        n, Util.PluralSuffix( n ) ) );
+
       foreach( Document d in docs )
       {
         string s = d.PathName;
         if( s.EndsWith( ".ifc.RVT" ) )
         {
-          ifcdoc = d;
+          if( null == ifcdocs)
+          {
+            ifcdocs = new List<Document>();
+          }
+          ifcdocs.Add( d );
         }
       }
-      return ifcdoc;
+      return ifcdocs;
     }
 
     public Result Execute(
@@ -85,37 +91,36 @@ namespace IfcSpaceZoneBoundaries
       UIDocument uidoc = uiapp.ActiveUIDocument;
       Application app = uiapp.Application;
       Document doc = uidoc.Document;
-      Result rc = Result.Failed;
 
       // Access linked-in IFC document
 
-      Document ifcdoc = GetLinkedInIfcDoc( app );
+      List<Document> ifcdocs = GetLinkedInIfcDocs( app );
 
-      if( null == ifcdoc )
+      if( 0 == ifcdocs.Count )
       {
         string path = App.Settings.IfcInputFilePath;
 
         if( CreateIfcLink( doc, path ) )
         {
-          ifcdoc = GetLinkedInIfcDoc( app );
+          ifcdocs = GetLinkedInIfcDocs( app );
         }
       }
 
-      if( null == ifcdoc )
-      {
-        App.Log( "No linked-in IFC document found." );
-      }
-      else
+      int n = ifcdocs.Count;
+
+      App.Log( string.Format(
+        "{0} linked-in IFC document{1} found.",
+        n, Util.PluralSuffix( n ) ) );
+
+      foreach( Document ifcdoc in ifcdocs )
       {
         App.Log( "Linked-in IFC document: "
           + ifcdoc.PathName );
 
         RoomZoneExporter a = new RoomZoneExporter(
           ifcdoc );
-
-        rc = Result.Succeeded;
       }
-      return rc;
+      return ( 0 < n ) ? Result.Succeeded : Result.Failed;
     }
   }
 }
