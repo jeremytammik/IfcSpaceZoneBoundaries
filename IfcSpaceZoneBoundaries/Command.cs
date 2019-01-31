@@ -92,12 +92,14 @@ namespace IfcSpaceZoneBoundaries
       Application app = uiapp.Application;
       Document doc = uidoc.Document;
 
-      // Access linked-in IFC document
+      // Retrieve all linked-in IFC documents
 
       List<Document> ifcdocs = GetLinkedInIfcDocs( app );
 
       if( 0 == ifcdocs.Count )
       {
+        // If no IFC links are present, create one
+
         string path = App.Settings.IfcInputFilePath;
 
         if( CreateIfcLink( doc, path ) )
@@ -120,7 +122,9 @@ namespace IfcSpaceZoneBoundaries
         RoomZoneExporter a = new RoomZoneExporter(
           ifcdoc );
       }
-      return ( 0 < n ) ? Result.Succeeded : Result.Failed;
+      return ( 0 < n ) 
+        ? Result.Succeeded 
+        : Result.Failed;
     }
   }
 }
