@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using System.IO;
 
 namespace IfcSpaceZoneBoundaries

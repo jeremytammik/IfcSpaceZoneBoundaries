@@ -72,7 +72,7 @@ namespace IfcSpaceZoneBoundaries
         string s = d.PathName;
         if( s.EndsWith( ".ifc.RVT" ) )
         {
-          if( null == ifcdocs)
+          if( null == ifcdocs )
           {
             ifcdocs = new List<Document>();
           }
@@ -96,7 +96,7 @@ namespace IfcSpaceZoneBoundaries
 
       List<Document> ifcdocs = GetLinkedInIfcDocs( app );
 
-      if( 0 == ifcdocs.Count )
+      if( null == ifcdocs || 0 == ifcdocs.Count )
       {
         // If no IFC links are present, create one
 
@@ -122,8 +122,8 @@ namespace IfcSpaceZoneBoundaries
         RoomZoneExporter a = new RoomZoneExporter(
           ifcdoc );
       }
-      return ( 0 < n ) 
-        ? Result.Succeeded 
+      return ( 0 < n )
+        ? Result.Succeeded
         : Result.Failed;
     }
   }

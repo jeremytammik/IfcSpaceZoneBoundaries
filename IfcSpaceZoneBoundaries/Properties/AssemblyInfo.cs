@@ -53,8 +53,9 @@ using System.Runtime.InteropServices;
 // 2019-01-30 2019.0.0.13 implemented JtSettings.IfcInputFilePath
 // 2019-01-30 2019.0.0.13 changed settings filename extension to 'json'
 // 2019-01-30 2019.0.0.13 change command to manual transaction mode for IFC import
-// 2019-01-30 2019.0.0.13 added AutoFlush to logging stream
+// 2019-01-30 2019.0.0.13 added AutoFlush to logging stream// 2019-01-31 2019.0.0.14 implemented processing of multiple linked-in IFC docs
 // 2019-01-31 2019.0.0.14 implemented processing of multiple linked-in IFC docs
+// 2019-02-01 2019.0.0.15 added check for null
 //
-[assembly: AssemblyVersion( "2019.0.0.14" )]
-[assembly: AssemblyFileVersion( "2019.0.0.14" )]
+[assembly: AssemblyVersion( "2019.0.0.15" )]
+[assembly: AssemblyFileVersion( "2019.0.0.15" )]
