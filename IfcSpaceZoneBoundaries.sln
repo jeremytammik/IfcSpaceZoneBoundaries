@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcSpaceZoneBoundaries", "IfcSpaceZoneBoundaries\IfcSpaceZoneBoundaries.csproj", "{26FFA53C-B4EF-4335-BF64-53E3E87FF07A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Addin", "IfcSpaceZoneBoundaries\Addin.csproj", "{26FFA53C-B4EF-4335-BF64-53E3E87FF07A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{31F2449A-64E7-4118-808A-7CA811A297B3} = {31F2449A-64E7-4118-808A-7CA811A297B3}
 	EndProjectSection

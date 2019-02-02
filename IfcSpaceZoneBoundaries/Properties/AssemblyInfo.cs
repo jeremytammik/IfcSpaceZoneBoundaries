@@ -56,6 +56,8 @@ using System.Runtime.InteropServices;
 // 2019-01-30 2019.0.0.13 added AutoFlush to logging stream
 // 2019-01-31 2019.0.0.14 implemented processing of multiple linked-in IFC docs
 // 2019-02-01 2019.0.0.15 added check for null
+// 2019-02-02 2019.0.0.16 implemented separate Exporter class library and reference that from add-in code
+// 2019-02-02 2019.0.0.17 changed add-in namespace to IfcSpaceZoneBoundaries.Addin
 //
-[assembly: AssemblyVersion( "2019.0.0.15" )]
-[assembly: AssemblyFileVersion( "2019.0.0.15" )]
+[assembly: AssemblyVersion( "2019.0.0.17" )]
+[assembly: AssemblyFileVersion( "2019.0.0.17" )]

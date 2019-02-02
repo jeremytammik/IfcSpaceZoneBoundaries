@@ -11,7 +11,7 @@ using Revit.IFC.Import.Data;
 using IfcSpaceZoneBoundaries.Exporter;
 #endregion
 
-namespace IfcSpaceZoneBoundaries
+namespace IfcSpaceZoneBoundaries.Addin
 {
   [Transaction( TransactionMode.Manual )]
   public class Command : IExternalCommand

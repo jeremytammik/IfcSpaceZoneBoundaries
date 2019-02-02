@@ -8,7 +8,7 @@ using Autodesk.Revit.DB.Events;
 using IfcSpaceZoneBoundaries.Exporter;
 #endregion
 
-namespace IfcSpaceZoneBoundaries
+namespace IfcSpaceZoneBoundaries.Addin
 {
   class App : IExternalDBApplication
   {

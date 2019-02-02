@@ -3,16 +3,16 @@
   <AddIn Type="Command">
     <Text>IFC Room and Zone Exporter</Text>
     <Description>Export IFC rooms and zones,,their properties, relationships and boundaries to CSV.</Description>
-    <Assembly>IfcSpaceZoneBoundaries.dll</Assembly>
-    <FullClassName>IfcSpaceZoneBoundaries.Command</FullClassName>
+    <Assembly>IfcSpaceZoneBoundaries.Addin.dll</Assembly>
+    <FullClassName>IfcSpaceZoneBoundaries.Addin.Command</FullClassName>
     <ClientId>8172a8cd-e400-4069-91dd-902d82180102</ClientId>
     <VendorId>com.typepad.thebuildingcoder</VendorId>
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
   </AddIn>
   <AddIn Type="DBApplication">
     <Name>IfcSpaceZoneBoundaries</Name>
-    <Assembly>IfcSpaceZoneBoundaries.dll</Assembly>
-    <FullClassName>IfcSpaceZoneBoundaries.App</FullClassName>
+    <Assembly>IfcSpaceZoneBoundaries.Addin.dll</Assembly>
+    <FullClassName>IfcSpaceZoneBoundaries.Addin.App</FullClassName>
     <ClientId>d66e95c8-b191-4a69-8937-c6dcd54ba623</ClientId>
     <VendorId>com.typepad.thebuildingcoder</VendorId>
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
