@@ -62,20 +62,19 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="IntPoint2d.cs" />
-    <Compile Include="IntPoint3d.cs" />
-    <Compile Include="JtLogger.cs" />
-    <Compile Include="JtSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoomZoneData.cs" />
-    <Compile Include="RoomZoneExporter.cs" />
-    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="IfcSpaceZoneBoundaries.addin" />
   </ItemGroup>
   <ItemGroup>
     <None Include="IfcSpaceZoneBoundaries.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Exporter\Exporter.csproj">
+      <Project>{31f2449a-64e7-4118-808a-7ca811a297b3}</Project>
+      <Name>Exporter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

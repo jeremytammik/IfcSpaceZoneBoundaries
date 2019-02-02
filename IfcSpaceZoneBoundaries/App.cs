@@ -5,6 +5,7 @@ using System.Reflection;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Events;
+using IfcSpaceZoneBoundaries.Exporter;
 #endregion
 
 namespace IfcSpaceZoneBoundaries
@@ -13,6 +14,11 @@ namespace IfcSpaceZoneBoundaries
   {
     static JtLogger _logger;
     static JtSettings _settings;
+
+    public static JtLogger Logger
+    {
+      get { return _logger; }
+    }
 
     public static void Log( string msg )
     {

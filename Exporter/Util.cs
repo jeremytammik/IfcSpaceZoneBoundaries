@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace IfcSpaceZoneBoundaries.Exporter
 {
-  class Util
+  public class Util
   {
     #region Geometrical Comparison
     public const double _eps = 1.0e-9;

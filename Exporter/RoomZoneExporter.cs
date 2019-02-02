@@ -3,7 +3,7 @@ using Autodesk.Revit.DB;
 
 namespace IfcSpaceZoneBoundaries.Exporter
 {
-  class RoomZoneExporter
+  public class RoomZoneExporter
   {
     /// <summary>
     /// Retrieve the rooms and areas, i.e., the spaces

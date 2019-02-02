@@ -4,7 +4,7 @@ using System.IO;
 
 namespace IfcSpaceZoneBoundaries.Exporter
 {
-  class JtLogger
+  public class JtLogger
   {
     string _filename;
     StreamWriter _stream;

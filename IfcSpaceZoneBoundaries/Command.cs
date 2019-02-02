@@ -8,6 +8,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Revit.IFC.Import;
 using Revit.IFC.Import.Data;
+using IfcSpaceZoneBoundaries.Exporter;
 #endregion
 
 namespace IfcSpaceZoneBoundaries
@@ -120,7 +121,7 @@ namespace IfcSpaceZoneBoundaries
           + ifcdoc.PathName );
 
         RoomZoneExporter a = new RoomZoneExporter(
-          ifcdoc );
+          ifcdoc, App.Logger );
       }
       return ( 0 < n )
         ? Result.Succeeded
