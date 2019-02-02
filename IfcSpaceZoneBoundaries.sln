@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcSpaceZoneBoundaries", "IfcSpaceZoneBoundaries\IfcSpaceZoneBoundaries.csproj", "{26FFA53C-B4EF-4335-BF64-53E3E87FF07A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{31F2449A-64E7-4118-808A-7CA811A297B3} = {31F2449A-64E7-4118-808A-7CA811A297B3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exporter", "Exporter\Exporter.csproj", "{31F2449A-64E7-4118-808A-7CA811A297B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{26FFA53C-B4EF-4335-BF64-53E3E87FF07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26FFA53C-B4EF-4335-BF64-53E3E87FF07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26FFA53C-B4EF-4335-BF64-53E3E87FF07A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31F2449A-64E7-4118-808A-7CA811A297B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F2449A-64E7-4118-808A-7CA811A297B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F2449A-64E7-4118-808A-7CA811A297B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F2449A-64E7-4118-808A-7CA811A297B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
