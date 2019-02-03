@@ -47,44 +47,58 @@ namespace IfcSpaceZoneBoundaries.Exporter
   /// </summary>
   public class JtSettings
   {
+    /// <summary>
+    /// File name and path to configurable user settings
+    /// </summary>
     static string _filename;
 
     /// <summary>
-    /// Initialise setting class with filename
+    /// Singleton instance
     /// </summary>
-    public static void Init( string filename )
+    static JtSettings _instance = null;
+
+    /// <summary>
+    /// Access the one and only singleton instance
+    /// </summary>
+    public static JtSettings Instance
     {
-      _filename = filename;
+      get { return _instance;  }
     }
 
     /// <summary>
-    /// Load settings from file, if found
+    /// Initialise user defined settings from specific file
     /// </summary>
-    /// <returns></returns>
-    public static JtSettings Load()
+    public static void Init( string path )
     {
-      Debug.Assert( null != _filename,
-        "did you forget to call Init?" );
-
-      JtSettings settings = new JtSettings();
+      _filename = path;
 
       if( File.Exists( _filename ) )
       {
-        settings = ( new JavaScriptSerializer() )
+        _instance = ( new JavaScriptSerializer() )
           .Deserialize<JtSettings>(
             File.ReadAllText( _filename ) );
       }
-      return settings;
+      else
+      {
+        _instance = new JtSettings();
+      }
     }
 
     /// <summary>
     /// Save current settings to file
     /// </summary>
-    public void Save()
+    static public void Save()
     {
       File.WriteAllText( _filename,
         ( new JavaScriptSerializer() )
-          .Serialize( this ) );
+          .Serialize( _instance ) );
+    }
+
+    /// <summary>
+    /// Private constructor
+    /// </summary>
+    JtSettings()
+    {
     }
 
     /// <summary>

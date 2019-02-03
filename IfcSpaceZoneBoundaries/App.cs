@@ -12,19 +12,6 @@ namespace IfcSpaceZoneBoundaries.Addin
 {
   class App : IExternalDBApplication
   {
-    static JtSettings _settings;
-
-    /// <summary>
-    /// Return the user-defined settings
-    /// </summary>
-    public static JtSettings Settings
-    {
-      get
-      {
-        return _settings;
-      }
-    }
-
     ///// <summary>
     ///// Return the full add-in assembly folder path.
     ///// </summary>
@@ -52,7 +39,6 @@ namespace IfcSpaceZoneBoundaries.Addin
       JtLogger.Init( Path.ChangeExtension( path, "log" ) );
 
       JtSettings.Init( Path.ChangeExtension( path, "json" ) );
-      _settings = JtSettings.Load();
 
       a.ApplicationInitialized += OnApplicationInitialized;
       return ExternalDBApplicationResult.Succeeded;
@@ -61,7 +47,7 @@ namespace IfcSpaceZoneBoundaries.Addin
     public ExternalDBApplicationResult OnShutdown( 
       ControlledApplication a )
     {
-      _settings.Save();
+      JtSettings.Save();
       JtLogger.Done();
       return ExternalDBApplicationResult.Succeeded;
     }

@@ -101,7 +101,7 @@ namespace IfcSpaceZoneBoundaries.Addin
       {
         // If no IFC links are present, create one
 
-        string path = App.Settings.IfcInputFilePath;
+        string path = JtSettings.Instance.IfcInputFilePath;
 
         if( CreateIfcLink( doc, path ) )
         {

@@ -12,9 +12,8 @@ namespace IfcSpaceZoneBoundaries.Exporter
     static JtLogger _instance = null;
 
     /// <summary>
-    /// Initialised message logging to specific file
+    /// Initialise message logging to specific file
     /// </summary>
-    /// <param name="path"></param>
     public static void Init( string path )
     {
       _instance = new JtLogger( path );
@@ -40,7 +39,6 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Add a message to the log file
     /// </summary>
-    /// <param name="msg"></param>
     public static void Log( string msg )
     {
       _instance.Log2( msg );
