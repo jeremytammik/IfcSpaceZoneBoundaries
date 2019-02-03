@@ -10,7 +10,7 @@
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
   </AddIn>
   <AddIn Type="DBApplication">
-    <Name>IfcSpaceZoneBoundaries</Name>
+    <Name>IfcSpaceZoneBoundariesAddin</Name>
     <Assembly>IfcSpaceZoneBoundaries.Addin.dll</Assembly>
     <FullClassName>IfcSpaceZoneBoundaries.Addin.App</FullClassName>
     <ClientId>d66e95c8-b191-4a69-8937-c6dcd54ba623</ClientId>

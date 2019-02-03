@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="DBApplication">
+    <Name>IfcSpaceZoneBoundariesAppBundle</Name>
+    <Assembly>IfcSpaceZoneBoundaries.AppBundle.dll</Assembly>
+    <FullClassName>IfcSpaceZoneBoundaries.AppBundle.App</FullClassName>
+    <ClientId>6ad4c72e-2b27-4bad-bd54-2e8f8be61bdf</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
