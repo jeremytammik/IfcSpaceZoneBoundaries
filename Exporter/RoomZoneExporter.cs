@@ -1,10 +1,41 @@
 ﻿using System.IO;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.ApplicationServices;
+using System.Collections.Generic;
 
 namespace IfcSpaceZoneBoundaries.Exporter
 {
   public class RoomZoneExporter
   {
+    /// <summary>
+    /// Retrieve and return all linked-in IFC documents.
+    /// </summary>
+    public static List<Document> GetLinkedInIfcDocs(
+      Application app )
+    {
+      List<Document> ifcdocs = null;
+      DocumentSet docs = app.Documents;
+      int n = docs.Size;
+
+      JtLogger.Log( string.Format(
+        "{0} open document{1}",
+        n, Util.PluralSuffix( n ) ) );
+
+      foreach( Document d in docs )
+      {
+        string s = d.PathName;
+        if( s.EndsWith( ".ifc.RVT" ) )
+        {
+          if( null == ifcdocs )
+          {
+            ifcdocs = new List<Document>();
+          }
+          ifcdocs.Add( d );
+        }
+      }
+      return ifcdocs;
+    }
+
     /// <summary>
     /// Retrieve the rooms and areas, i.e., the spaces
     /// and zones, from the linked-in IFC document.
@@ -17,7 +48,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
 
       string path = ifcdoc.PathName;
 
-      JtLogger.Log( string.Format( 
+      JtLogger.Log( string.Format(
         "Processing {0}...", path ) );
 
       // IFC room and zones are represented by
@@ -36,7 +67,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
 
       int n = 0;
 
-      using( StreamWriter csv_out 
+      using( StreamWriter csv_out
         = new StreamWriter( path ) )
       {
         foreach( Element e in col )
@@ -54,6 +85,33 @@ namespace IfcSpaceZoneBoundaries.Exporter
       JtLogger.Log( string.Format(
         "{0} zones and spaces written to {1}.",
         n, path ) );
+
+      return n;
+    }
+
+    public static int ExportAll(
+      Application app )
+    {
+      List<Document> ifcdocs = GetLinkedInIfcDocs(
+        app );
+
+      int n = ifcdocs.Count;
+
+      JtLogger.Log( string.Format(
+        "{0} linked-in IFC document{1} found.",
+        n, Util.PluralSuffix( n ) ) );
+
+      foreach( Document ifcdoc in ifcdocs )
+      {
+        JtLogger.Log( "Linked-in IFC document: "
+          + ifcdoc.PathName );
+
+        n = RoomZoneExporter.Export( ifcdoc );
+      }
+
+      JtLogger.Log( string.Format(
+        "{0} linked-in IFC document{1} exported.",
+        n, Util.PluralSuffix( n ) ) );
 
       return n;
     }

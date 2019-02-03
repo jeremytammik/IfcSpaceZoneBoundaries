@@ -55,33 +55,6 @@ namespace IfcSpaceZoneBoundaries.Addin
       return rc;
     }
 
-    /// <summary>
-    /// Retrieve and return all linked-in IFC documents.
-    /// </summary>
-    List<Document> GetLinkedInIfcDocs( Application app )
-    {
-      List<Document> ifcdocs = null;
-      DocumentSet docs = app.Documents;
-      int n = docs.Size;
-
-      JtLogger.Log( string.Format( "{0} open document{1}",
-        n, Util.PluralSuffix( n ) ) );
-
-      foreach( Document d in docs )
-      {
-        string s = d.PathName;
-        if( s.EndsWith( ".ifc.RVT" ) )
-        {
-          if( null == ifcdocs )
-          {
-            ifcdocs = new List<Document>();
-          }
-          ifcdocs.Add( d );
-        }
-      }
-      return ifcdocs;
-    }
-
     public Result Execute(
       ExternalCommandData commandData,
       ref string message,
@@ -94,7 +67,8 @@ namespace IfcSpaceZoneBoundaries.Addin
 
       // Retrieve all linked-in IFC documents
 
-      List<Document> ifcdocs = GetLinkedInIfcDocs( app );
+      List<Document> ifcdocs 
+        = RoomZoneExporter.GetLinkedInIfcDocs( app );
 
       if( null == ifcdocs || 0 == ifcdocs.Count )
       {
@@ -104,23 +78,13 @@ namespace IfcSpaceZoneBoundaries.Addin
 
         if( CreateIfcLink( doc, path ) )
         {
-          ifcdocs = GetLinkedInIfcDocs( app );
+          ifcdocs = RoomZoneExporter
+            .GetLinkedInIfcDocs( app );
         }
       }
 
-      int n = ifcdocs.Count;
+      int n = RoomZoneExporter.ExportAll( app );
 
-      JtLogger.Log( string.Format(
-        "{0} linked-in IFC document{1} found.",
-        n, Util.PluralSuffix( n ) ) );
-
-      foreach( Document ifcdoc in ifcdocs )
-      {
-        JtLogger.Log( "Linked-in IFC document: "
-          + ifcdoc.PathName );
-
-        RoomZoneExporter.Export( ifcdoc );
-      }
       return ( 0 < n )
         ? Result.Succeeded
         : Result.Failed;
