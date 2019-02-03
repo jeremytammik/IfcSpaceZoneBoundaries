@@ -67,7 +67,7 @@ namespace IfcSpaceZoneBoundaries.Addin
 
       // Retrieve all linked-in IFC documents
 
-      List<Document> ifcdocs 
+      List<Document> ifcdocs
         = RoomZoneExporter.GetLinkedInIfcDocs( app );
 
       if( null == ifcdocs || 0 == ifcdocs.Count )

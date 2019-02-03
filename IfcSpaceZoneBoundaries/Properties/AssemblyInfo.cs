@@ -59,6 +59,7 @@ using System.Runtime.InteropServices;
 // 2019-02-02 2019.0.0.16 implemented separate Exporter class library and reference that from add-in code
 // 2019-02-02 2019.0.0.17 changed add-in namespace to IfcSpaceZoneBoundaries.Addin
 // 2019-02-03 2019.0.0.18 moved logger and settings classes from add-in App to singleton classes
+// 2019-02-03 2019.0.0.19 moved GetLinkedInIfcDocs from add-in command to exporter class library
 //
-[assembly: AssemblyVersion( "2019.0.0.18" )]
-[assembly: AssemblyFileVersion( "2019.0.0.18" )]
+[assembly: AssemblyVersion( "2019.0.0.19" )]
+[assembly: AssemblyFileVersion( "2019.0.0.19" )]

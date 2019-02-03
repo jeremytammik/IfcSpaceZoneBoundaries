@@ -19,7 +19,7 @@ namespace IfcSpaceZoneBoundaries.Addin
       throw new NotImplementedException();
     }
 
-    public ExternalDBApplicationResult OnStartup( 
+    public ExternalDBApplicationResult OnStartup(
       ControlledApplication a )
     {
       string path = Assembly.GetExecutingAssembly().Location;
@@ -33,7 +33,7 @@ namespace IfcSpaceZoneBoundaries.Addin
       return ExternalDBApplicationResult.Succeeded;
     }
 
-    public ExternalDBApplicationResult OnShutdown( 
+    public ExternalDBApplicationResult OnShutdown(
       ControlledApplication a )
     {
       JtSettings.Save();
