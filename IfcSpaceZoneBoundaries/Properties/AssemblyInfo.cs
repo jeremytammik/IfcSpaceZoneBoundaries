@@ -61,7 +61,7 @@ using System.Runtime.InteropServices;
 // 2019-02-03 2019.0.0.18 moved logger and settings classes from add-in App to singleton classes
 // 2019-02-03 2019.0.0.19 moved GetLinkedInIfcDocs from add-in command to exporter class library
 // 2019-02-03 2019.0.0.20 implemented AppBundle and ExportLinkedInIfcDocs
-// 2019-02-03 2019.0.0.20 fixed result reporting message
+// 2019-02-03 2019.0.0.20 tested add-in and fixed result reporting message
 //
 [assembly: AssemblyVersion( "2019.0.0.20" )]
 [assembly: AssemblyFileVersion( "2019.0.0.20" )]
