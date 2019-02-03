@@ -16,8 +16,16 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// </summary>
     public static void Init( string path )
     {
-      _instance = new JtLogger( path );
-      Log( "Log file begin" );
+      if( null == _instance )
+      {
+        _instance = new JtLogger( path );
+        Log( "Log file begin" );
+      }
+      else
+      {
+        Log( "Additional log file requested using " 
+          + path );
+      }
     }
 
     /// <summary>
@@ -25,8 +33,11 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// </summary>
     public static void Done()
     {
-      _instance.Done2();
-      _instance = null;
+      if( null != _instance )
+      {
+        _instance.Done2();
+        _instance = null;
+      }
     }
 
     /// <summary>
