@@ -58,6 +58,7 @@ using System.Runtime.InteropServices;
 // 2019-02-01 2019.0.0.15 added check for null
 // 2019-02-02 2019.0.0.16 implemented separate Exporter class library and reference that from add-in code
 // 2019-02-02 2019.0.0.17 changed add-in namespace to IfcSpaceZoneBoundaries.Addin
+// 2019-02-03 2019.0.0.18 maved logger out of add-in App class
 //
-[assembly: AssemblyVersion( "2019.0.0.17" )]
-[assembly: AssemblyFileVersion( "2019.0.0.17" )]
+[assembly: AssemblyVersion( "2019.0.0.18" )]
+[assembly: AssemblyFileVersion( "2019.0.0.18" )]
