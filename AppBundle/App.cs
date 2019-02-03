@@ -1,4 +1,4 @@
-#define FORGE_DA4R_TEST_LOCALLY
+//#define FORGE_DA4R_TEST_LOCALLY
 
 #region Namespaces
 using System;
