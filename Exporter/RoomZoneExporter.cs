@@ -1,7 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.ApplicationServices;
-using System.Collections.Generic;
 
 namespace IfcSpaceZoneBoundaries.Exporter
 {

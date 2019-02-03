@@ -4,7 +4,7 @@ using System.Web.Script.Serialization;
 
 namespace IfcSpaceZoneBoundaries.Exporter
 {
-  // grabbed from http://stackoverflow.com/questions/453161/best-practice-to-save-application-settings-in-a-windows-forms-application
+  // adapted from http://stackoverflow.com/questions/453161/best-practice-to-save-application-settings-in-a-windows-forms-application
   public class AppSettings<T> where T : new()
   {
     static string _filename;
