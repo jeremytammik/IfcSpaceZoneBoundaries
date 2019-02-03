@@ -95,9 +95,9 @@ namespace IfcSpaceZoneBoundaries.Exporter
     }
 
     /// <summary>
-    /// Private constructor
+    /// Public constructor required by deserialisation
     /// </summary>
-    JtSettings()
+    public JtSettings()
     {
     }
 

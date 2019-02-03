@@ -95,25 +95,30 @@ namespace IfcSpaceZoneBoundaries.Exporter
       List<Document> ifcdocs = GetLinkedInIfcDocs(
         app );
 
-      int n = ifcdocs.Count;
+      int nDocs = ifcdocs.Count;
 
       JtLogger.Log( string.Format(
         "{0} linked-in IFC document{1} found.",
-        n, Util.PluralSuffix( n ) ) );
+        nDocs, Util.PluralSuffix( nDocs ) ) );
+
+      int nElements = nDocs = 0;
 
       foreach( Document ifcdoc in ifcdocs )
       {
         JtLogger.Log( "Linked-in IFC document: "
           + ifcdoc.PathName );
 
-        n = RoomZoneExporter.Export( ifcdoc );
+        nElements += RoomZoneExporter.Export( ifcdoc );
+
+        ++nDocs;
       }
 
-      JtLogger.Log( string.Format(
-        "{0} linked-in IFC document{1} exported.",
-        n, Util.PluralSuffix( n ) ) );
+      JtLogger.Log( string.Format( "{0} element{1} "
+        + "in {2} linked-in IFC document{3} exported.",
+        nElements, Util.PluralSuffix( nElements ),
+        nDocs, Util.PluralSuffix( nDocs ) ) );
 
-      return n;
+      return nDocs;
     }
   }
 }
