@@ -6,6 +6,34 @@ namespace IfcSpaceZoneBoundaries.Exporter
 {
   public class JtLogger
   {
+    /// <summary>
+    /// Singleton instance
+    /// </summary>
+    static JtLogger _instance = null;
+
+    public static void Init( string path )
+    {
+      _instance = new JtLogger( path );
+    }
+
+    /// <summary>
+    /// Provide access to the logging functionality
+    /// </summary>
+    public static JtLogger Logger
+    {
+      get { return _instance; }
+    }
+
+    /// <summary>
+    /// Add a message to the log file
+    /// </summary>
+    /// <param name="msg"></param>
+    public static void Log( string msg )
+    {
+      _instance.Log2( msg );
+    }
+
+
     string _filename;
     StreamWriter _stream;
 
@@ -23,7 +51,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Initialise logging and open output stream
     /// </summary>
-    public bool Init( string filepath )
+    JtLogger( string filepath )
     {
       Debug.Assert( null != filepath
         && 0 < filepath.Length,
@@ -38,14 +66,13 @@ namespace IfcSpaceZoneBoundaries.Exporter
       _stream = new StreamWriter( _filename );
       _stream.AutoFlush = true;
       Log( "Log file begin" );
-      return true;
     }
 
     /// <summary>
     /// Add a log entry
     /// </summary>
     /// <param name="s"></param>
-    public void Log( string s )
+    void Log2( string s )
     {
       Debug.Print( s );
 

@@ -12,18 +12,7 @@ namespace IfcSpaceZoneBoundaries.Addin
 {
   class App : IExternalDBApplication
   {
-    static JtLogger _logger;
     static JtSettings _settings;
-
-    public static JtLogger Logger
-    {
-      get { return _logger; }
-    }
-
-    public static void Log( string msg )
-    {
-      _logger.Log( msg );
-    }
 
     /// <summary>
     /// Return the user-defined settings
