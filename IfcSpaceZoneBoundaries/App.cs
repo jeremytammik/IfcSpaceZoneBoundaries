@@ -49,8 +49,7 @@ namespace IfcSpaceZoneBoundaries.Addin
     {
       string path = Assembly.GetExecutingAssembly().Location;
 
-      _logger = new JtLogger();
-      _logger.Init( Path.ChangeExtension( path, "log" ) );
+      JtLogger.Init( Path.ChangeExtension( path, "log" ) );
 
       JtSettings.Init( Path.ChangeExtension( path, "json" ) );
       _settings = JtSettings.Load();
@@ -63,7 +62,7 @@ namespace IfcSpaceZoneBoundaries.Addin
       ControlledApplication a )
     {
       _settings.Save();
-      _logger.Done();
+      JtLogger.Done();
       return ExternalDBApplicationResult.Succeeded;
     }
   }

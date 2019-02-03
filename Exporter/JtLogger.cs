@@ -11,18 +11,31 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// </summary>
     static JtLogger _instance = null;
 
+    /// <summary>
+    /// Initialised message logging to specific file
+    /// </summary>
+    /// <param name="path"></param>
     public static void Init( string path )
     {
       _instance = new JtLogger( path );
     }
 
     /// <summary>
+    /// Terminate logging and close output stream
+    /// </summary>
+    public static void Done()
+    {
+      _instance.Done2();
+      _instance = null;
+    }
+
+    /// <summary>
     /// Provide access to the logging functionality
     /// </summary>
-    public static JtLogger Logger
-    {
-      get { return _instance; }
-    }
+    //public static JtLogger Logger
+    //{
+    //  get { return _instance; }
+    //}
 
     /// <summary>
     /// Add a message to the log file
@@ -40,13 +53,13 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Current log file name
     /// </summary>
-    public string Filename
-    {
-      get
-      {
-        return _filename;
-      }
-    }
+    //public string Filename
+    //{
+    //  get
+    //  {
+    //    return _filename;
+    //  }
+    //}
 
     /// <summary>
     /// Initialise logging and open output stream
@@ -71,7 +84,6 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Add a log entry
     /// </summary>
-    /// <param name="s"></param>
     void Log2( string s )
     {
       Debug.Print( s );
@@ -85,7 +97,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Terminate logging and close output stream
     /// </summary>
-    public void Done()
+    void Done2()
     {
       Log( "The End" );
       _stream.Close();

@@ -65,7 +65,7 @@ namespace IfcSpaceZoneBoundaries.Addin
       DocumentSet docs = app.Documents;
       int n = docs.Size;
 
-      App.Log( string.Format( "{0} open document{1}",
+      JtLogger.Log( string.Format( "{0} open document{1}",
         n, Util.PluralSuffix( n ) ) );
 
       foreach( Document d in docs )
@@ -111,17 +111,17 @@ namespace IfcSpaceZoneBoundaries.Addin
 
       int n = ifcdocs.Count;
 
-      App.Log( string.Format(
+      JtLogger.Log( string.Format(
         "{0} linked-in IFC document{1} found.",
         n, Util.PluralSuffix( n ) ) );
 
       foreach( Document ifcdoc in ifcdocs )
       {
-        App.Log( "Linked-in IFC document: "
+        JtLogger.Log( "Linked-in IFC document: "
           + ifcdoc.PathName );
 
-        RoomZoneExporter a = new RoomZoneExporter(
-          ifcdoc, App.Logger );
+        RoomZoneExporter a = new RoomZoneExporter( 
+          ifcdoc );
       }
       return ( 0 < n )
         ? Result.Succeeded
