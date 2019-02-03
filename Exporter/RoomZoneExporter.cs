@@ -10,7 +10,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// and zones, from the linked-in IFC document.
     /// </summary>
     /// <param name="ifcdoc">Linked-in IFC document</param>
-    public RoomZoneExporter( Document ifcdoc )
+    public static int Export( Document ifcdoc )
     {
       //logger.Log( string.Format( "Logging level {0}", 
       //  App.Settings.LoggingLevel ) );
@@ -54,6 +54,8 @@ namespace IfcSpaceZoneBoundaries.Exporter
       JtLogger.Log( string.Format(
         "{0} zones and spaces written to {1}.",
         n, path ) );
+
+      return n;
     }
   }
 }

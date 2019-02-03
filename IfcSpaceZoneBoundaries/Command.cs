@@ -1,7 +1,6 @@
 #region Namespaces
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
@@ -120,8 +119,7 @@ namespace IfcSpaceZoneBoundaries.Addin
         JtLogger.Log( "Linked-in IFC document: "
           + ifcdoc.PathName );
 
-        RoomZoneExporter a = new RoomZoneExporter( 
-          ifcdoc );
+        RoomZoneExporter.Export( ifcdoc );
       }
       return ( 0 < n )
         ? Result.Succeeded

@@ -29,6 +29,7 @@ namespace IfcSpaceZoneBoundaries.Addin
       JtSettings.Init( Path.ChangeExtension( path, "json" ) );
 
       a.ApplicationInitialized += OnApplicationInitialized;
+
       return ExternalDBApplicationResult.Succeeded;
     }
 
