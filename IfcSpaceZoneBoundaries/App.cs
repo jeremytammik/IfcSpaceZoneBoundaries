@@ -12,18 +12,6 @@ namespace IfcSpaceZoneBoundaries.Addin
 {
   class App : IExternalDBApplication
   {
-    ///// <summary>
-    ///// Return the full add-in assembly folder path.
-    ///// </summary>
-    //public static string Path
-    //{
-    //  get
-    //  {
-    //    return System.IO.Path.GetDirectoryName(
-    //      Assembly.GetExecutingAssembly().Location );
-    //  }
-    //}
-
     void OnApplicationInitialized(
       object sender,
       ApplicationInitializedEventArgs e )
