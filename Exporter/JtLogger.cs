@@ -17,6 +17,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     public static void Init( string path )
     {
       _instance = new JtLogger( path );
+      Log( "Log file begin" );
     }
 
     /// <summary>
@@ -76,7 +77,6 @@ namespace IfcSpaceZoneBoundaries.Exporter
       _filename = filepath;
       _stream = new StreamWriter( _filename );
       _stream.AutoFlush = true;
-      Log( "Log file begin" );
     }
 
     /// <summary>
