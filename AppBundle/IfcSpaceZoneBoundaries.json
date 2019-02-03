@@ -1,1 +1,3 @@
-{"IfcInputFilePath":"Z:/a/special/bouygues/2019_bim_surface_info/test/02/010-123xx3-arc-bat01-apt01_2_2018-12-27_1507.ifc","LoggingLevel":3,"LevelOrFloorRegex":"","ZoneRegex":"APT04.*"}
+{"IfcInputFilePath":"Z:/a/special/bouygues/2019_bim_surface_info/test/02/010-123xx3-arc-bat01-apt01_2_2018-12-27_1507.ifc",
+"IfcRvtInputFilePath":"Z:/a/special/bouygues/2019_bim_surface_info/test/02/010-123xx3-arc-bat01-apt01_2_2018-12-27_1507.ifc.RVT",
+"LoggingLevel":3,"LevelOrFloorRegex":"","ZoneRegex":"APT04.*"}
