@@ -64,6 +64,7 @@ using System.Runtime.InteropServices;
 // 2019-02-03 2019.0.0.20 tested add-in and fixed result reporting message
 // 2019-02-03 2019.0.0.20 fixed logger to handle simultaneous add-in and AppBundle calls
 // 2019-02-03 2019.0.0.20 successful local AppBundle test
+// 2019-02-03 2019.0.0.21 renamed add-in source directory to Addin for consistency
 //
-[assembly: AssemblyVersion( "2019.0.0.20" )]
-[assembly: AssemblyFileVersion( "2019.0.0.20" )]
+[assembly: AssemblyVersion( "2019.0.0.21" )]
+[assembly: AssemblyFileVersion( "2019.0.0.21" )]
