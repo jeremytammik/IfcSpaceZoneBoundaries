@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "Autodesk Inc." )]
 [assembly: AssemblyProduct( "IfcSpaceZoneBoundaries Revit C# .NET Add-In" )]
-[assembly: AssemblyCopyright( "Copyright 2019 (C) Jeremy Tammik, Autodesk Inc." )]
+[assembly: AssemblyCopyright( "Copyright (C) 2019 by Jeremy Tammik, Autodesk Inc." )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 
@@ -67,6 +67,7 @@ using System.Runtime.InteropServices;
 // 2019-02-03 2019.0.0.21 renamed add-in source directory to Addin for consistency
 // 2019-02-03 2019.0.0.22 turn off local testing for live Forge DA4R test
 // 2019-02-26 2019.0.1.0 add level and area in square meters
+// 2019-02-26 2019.0.1.0 implemented Util.GetLevelName
 //
 [assembly: AssemblyVersion( "2019.0.1.0" )]
 [assembly: AssemblyFileVersion( "2019.0.1.0" )]

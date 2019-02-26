@@ -293,6 +293,28 @@ namespace IfcSpaceZoneBoundaries.Exporter
     }
 
     /// <summary>
+    /// Retrun the name of the level of the given element.
+    /// </summary>
+    public static string GetLevelName(
+      Element e )
+    {
+      ElementId lid = e.LevelId;
+
+      if( null == lid
+        || ElementId.InvalidElementId == lid )
+      {
+        string s = string.Format(
+          "element {0} has no valid level", e.Id );
+
+        throw new ArgumentException( s );
+      }
+
+      Document doc = e.Document;
+      Element level = doc.GetElement( e.LevelId );
+      return level.Name;
+    }
+
+    /// <summary>
     /// Read a string property value from a name Revit
     /// parameter. Used to read IFC properties from
     /// shared parameters.
