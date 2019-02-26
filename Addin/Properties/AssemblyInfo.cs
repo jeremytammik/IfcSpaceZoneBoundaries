@@ -66,6 +66,7 @@ using System.Runtime.InteropServices;
 // 2019-02-03 2019.0.0.20 successful local AppBundle test
 // 2019-02-03 2019.0.0.21 renamed add-in source directory to Addin for consistency
 // 2019-02-03 2019.0.0.22 turn off local testing for live Forge DA4R test
+// 2019-02-26 2019.0.1.0 add level and area in square meters
 //
-[assembly: AssemblyVersion( "2019.0.0.22" )]
-[assembly: AssemblyFileVersion( "2019.0.0.22" )]
+[assembly: AssemblyVersion( "2019.0.1.0" )]
+[assembly: AssemblyFileVersion( "2019.0.1.0" )]
