@@ -92,6 +92,8 @@ namespace IfcSpaceZoneBoundaries.Exporter
         Zone,
         Layer,
         Pset,
+        Level,
+        Area,
         Z,
         Boundary );
     }

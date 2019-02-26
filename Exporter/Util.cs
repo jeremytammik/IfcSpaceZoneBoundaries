@@ -270,6 +270,9 @@ namespace IfcSpaceZoneBoundaries.Exporter
 
     const double _inchToMm = 25.4;
     const double _footToMm = 12 * _inchToMm;
+    const double _footToMeter = 0.001 * _footToMm;
+    const double _sqfToSqm = _footToMeter * _footToMeter;
+
 
     /// <summary>
     /// Convert a given length in feet to millimetres,
@@ -280,8 +283,20 @@ namespace IfcSpaceZoneBoundaries.Exporter
       return (int) Math.Round( _footToMm * length,
         MidpointRounding.AwayFromZero );
     }
+
+    /// <summary>
+    /// Convert a given length in square feet 
+    /// to square metres.
+    /// </summary>
+    public static int SquareFootToSquareMeter( 
+      double area )
+    {
+      return (int) Math.Round( _sqfToSqm * area,
+        MidpointRounding.AwayFromZero );
+    }
     #endregion // Unit Handling
 
+    #region Formatting
     /// <summary>
     /// Return an English plural suffix for the given
     /// number of items, i.e. 's' for zero or more
@@ -292,6 +307,31 @@ namespace IfcSpaceZoneBoundaries.Exporter
       return 1 == n ? "" : "s";
     }
 
+    /// <summary>
+    /// Return a string for a real number
+    /// formatted to two decimal places.
+    /// </summary>
+    public static string RealString( double a )
+    {
+      return a.ToString( "0.##" );
+    }
+
+    /// <summary>
+    /// Return a string listing the space-delimited X 
+    /// and Y coordinates converted from feet to millimetres 
+    /// from a list of XYZ vertices in imperial feet.
+    /// </summary>
+    static string XyzListTo2dPointString(
+      List<XYZ> vertices )
+    {
+      return string.Join( " ",
+        vertices.Select<XYZ, string>( p
+          => new IntPoint2d( p.X, p.Y )
+            .ToString( true ) ) );
+    }
+    #endregion // Formatting
+
+    #region Element Data Accessors
     /// <summary>
     /// Retrun the name of the level of the given element.
     /// </summary>
@@ -338,6 +378,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
         ? ps[0].AsString()
         : null;
     }
+    #endregion // Element Data Accessors
 
     #region Geometry Extraction
 
@@ -442,20 +483,6 @@ namespace IfcSpaceZoneBoundaries.Exporter
     #endregion // Geometry Extraction
 
     /// <summary>
-    /// Return a string listing the space-delimited X 
-    /// and Y coordinates converted from feet to millimetres 
-    /// from a list of XYZ vertices in imperial feet.
-    /// </summary>
-    static string XyzListTo2dPointString( 
-      List<XYZ> vertices )
-    {
-      return string.Join( " ",
-        vertices.Select<XYZ, string>( p
-          => new IntPoint2d( p.X, p.Y )
-            .ToString( true ) ) );
-    }
-
-    /// <summary>
     /// Return the XY vertices of the bottom horizontal
     /// face of the given element, scaled to millimetres, 
     /// in a string of space-separated integer values.
@@ -477,6 +504,10 @@ namespace IfcSpaceZoneBoundaries.Exporter
       {
         Z = Util.FootToMmInt( bottom_face.Origin.Z )
           .ToString();
+
+        Area = Util.RealString( 
+          Util.SquareFootToSquareMeter( 
+            bottom_face.Area ) );
 
         List<XYZ> vertices = GetFirstEdgeLoopVertices( 
           bottom_face );
