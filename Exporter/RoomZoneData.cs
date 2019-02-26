@@ -74,7 +74,8 @@ namespace IfcSpaceZoneBoundaries.Exporter
         Layer = Util.GetStringParamValue( e, _pname_layer );
         Pset = Util.GetStringParamValue( e, _pname_pset );
         Level = Util.GetLevelName( e );
-        Boundary = Util.GetBottomFaceBoundaryStringAndZ( e, out Z );
+        Boundary = Util.GetBottomFaceBoundaryStringZArea( 
+          e, out Z, out Area );
       }
     }
 

@@ -456,20 +456,22 @@ namespace IfcSpaceZoneBoundaries.Exporter
     }
 
     /// <summary>
-    /// Return the XY coordinates of the top horizontal
+    /// Return the XY vertices of the bottom horizontal
     /// face of the given element, scaled to millimetres, 
     /// in a string of space-separated integer values.
-    /// Prepend the face's Z coordinate and a comma.
+    /// Prepend the face's area in square meters and its
+    /// Z elevation coordinate, comma-separated.
     /// </summary>
-    public static string GetBottomFaceBoundaryStringAndZ( 
+    public static string GetBottomFaceBoundaryStringZArea( 
       Element e,
-      out string Z )
+      out string Z,
+      out string Area )
     {
       GeometryElement geo = e.get_Geometry( _geo_opt );
 
       PlanarFace bottom_face = GetBottomHorizontalFace( geo );
 
-      string s = Z = null;
+      string s = Z = Area = null;
 
       if( null != bottom_face )
       {
