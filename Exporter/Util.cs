@@ -345,18 +345,13 @@ namespace IfcSpaceZoneBoundaries.Exporter
 
       ElementId lid = e.LevelId;
 
-      if( null != lid
-        && ElementId.InvalidElementId == lid )
-      {
-        Document doc = e.Document;
-        level = doc.GetElement( lid ) as Level;
-      }
-      else
+      if( null == lid
+        || ElementId.InvalidElementId == lid )
       {
         string s = string.Format(
           "element {0}: invalid level property", e.Id );
 
-        Debug.Print( s );
+        //Debug.Print( s );
 
         //throw new ArgumentException( s );
 
@@ -374,6 +369,11 @@ namespace IfcSpaceZoneBoundaries.Exporter
             break;
           }
         }
+      }
+      else
+      {
+        Document doc = e.Document;
+        level = doc.GetElement( lid ) as Level;
       }
       return level.Name;
     }
