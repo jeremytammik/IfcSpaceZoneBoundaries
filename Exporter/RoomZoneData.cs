@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using System.Linq;
 
 namespace IfcSpaceZoneBoundaries.Exporter
 {
@@ -52,7 +53,9 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// Instantiate a room or zone data object from
     /// a given Revit element `e`
     /// </summary>
-    public RoomZoneData( Element e )
+    public RoomZoneData( 
+      Element e,
+      IOrderedEnumerable<Level> levels )
     {
       string export_as = Util.GetStringParamValue(
         e, _pname_export_as );
@@ -73,9 +76,14 @@ namespace IfcSpaceZoneBoundaries.Exporter
         Zone = Util.GetStringParamValue( e, _pname_zone );
         Layer = Util.GetStringParamValue( e, _pname_layer );
         Pset = Util.GetStringParamValue( e, _pname_pset );
-        Level = Util.GetLevelName( e );
+
+        double z, area;
         Boundary = Util.GetBottomFaceBoundaryStringZArea( 
-          e, out Z, out Area );
+          e, out z, out area );
+
+        Z = Util.FootToMmInt( z ).ToString();
+        Area = Util.RealString( Util.SquareFootToSquareMeter( area ) );
+        Level = Util.GetLevelName( e, z, levels );
       }
     }
 

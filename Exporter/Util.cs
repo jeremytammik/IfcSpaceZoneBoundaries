@@ -288,11 +288,10 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// Convert a given length in square feet 
     /// to square metres.
     /// </summary>
-    public static int SquareFootToSquareMeter( 
+    public static double SquareFootToSquareMeter( 
       double area )
     {
-      return (int) Math.Round( _sqfToSqm * area,
-        MidpointRounding.AwayFromZero );
+      return _sqfToSqm * area;
     }
     #endregion // Unit Handling
 
@@ -336,8 +335,14 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// Retrun the name of the level of the given element.
     /// </summary>
     public static string GetLevelName(
-      Element e )
+      Element e,
+      double z,
+      IOrderedEnumerable<Level> levels )
     {
+      Level level = null;
+
+      // Retrieve the element's Level property:
+
       ElementId lid = e.LevelId;
 
       if( null == lid
@@ -346,11 +351,27 @@ namespace IfcSpaceZoneBoundaries.Exporter
         string s = string.Format(
           "element {0} has no valid level", e.Id );
 
-        throw new ArgumentException( s );
+        //throw new ArgumentException( s );
+
+        // If no level is defined, grab the first
+        // one from the list sorted by elevation:
+
+        foreach( Level l in levels )
+        {
+          double elev = l.Elevation;
+
+          if( Util.IsEqual( z, elev )
+            || z <= l.Elevation )
+          {
+            level = l;
+            break;
+          }
+        }
       }
 
-      Document doc = e.Document;
-      Element level = doc.GetElement( e.LevelId );
+      //Document doc = e.Document;
+      //level = doc.GetElement( e.LevelId );
+
       return level.Name;
     }
 
@@ -382,7 +403,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Retrieve all levels sorted by elevation
     /// </summary>
-    IOrderedEnumerable<Level> GetSortedLevels( 
+    public static IOrderedEnumerable<Level> GetSortedLevels( 
       Document doc )
     {
       return new FilteredElementCollector( doc )
@@ -503,23 +524,27 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// </summary>
     public static string GetBottomFaceBoundaryStringZArea( 
       Element e,
-      out string Z,
-      out string Area )
+      out double z,
+      out double area )
     {
       GeometryElement geo = e.get_Geometry( _geo_opt );
 
       PlanarFace bottom_face = GetBottomHorizontalFace( geo );
 
-      string s = Z = Area = null;
+      string s = null;
+      z = area = -Double.MaxValue;
 
       if( null != bottom_face )
       {
-        Z = Util.FootToMmInt( bottom_face.Origin.Z )
-          .ToString();
+        z = bottom_face.Origin.Z;
+        area = bottom_face.Area;
 
-        Area = Util.RealString( 
-          Util.SquareFootToSquareMeter( 
-            bottom_face.Area ) );
+        //Z = Util.FootToMmInt( bottom_face.Origin.Z )
+        //  .ToString();
+
+        //Area = Util.RealString( 
+        //  Util.SquareFootToSquareMeter( 
+        //    bottom_face.Area ) );
 
         List<XYZ> vertices = GetFirstEdgeLoopVertices( 
           bottom_face );

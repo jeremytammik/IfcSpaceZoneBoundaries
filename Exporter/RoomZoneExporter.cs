@@ -2,6 +2,7 @@
 using System.IO;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.ApplicationServices;
+using System.Linq;
 
 namespace IfcSpaceZoneBoundaries.Exporter
 {
@@ -51,6 +52,18 @@ namespace IfcSpaceZoneBoundaries.Exporter
       JtLogger.Log( string.Format(
         "Processing {0}...", path ) );
 
+      // Retrieve the sorted levels:
+
+      IOrderedEnumerable<Level> levels
+        = Util.GetSortedLevels( ifcdoc );
+
+      foreach(Level level in levels)
+      {
+        JtLogger.Log( string.Format(
+          "Level {0} at elevation {1}",
+          level.Name, level.Elevation ) );
+      }
+
       // IFC room and zones are represented by
       // generic model direct shape elements.
 
@@ -77,7 +90,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
       {
         foreach( Element e in col )
         {
-          RoomZoneData d = new RoomZoneData( e );
+          RoomZoneData d = new RoomZoneData( e, levels );
 
           if( d.IsRoomOrZone )
           {
