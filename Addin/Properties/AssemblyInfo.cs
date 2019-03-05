@@ -71,6 +71,8 @@ using System.Runtime.InteropServices;
 // 2019-02-26 2019.0.1.0 completed level and area export implementation
 // 2019-02-26 2019.0.1.0 implemented support for CSV output file path in user defined settings
 // 2019-03-05 2019.0.1.1 implemented GetSortedLevels, get area and elevation as double, determine level from elevation
+// 2019-03-05 2019.0.1.1 successful local test of AppBundle
+// 2019-03-05 2019.0.1.1 undefine FORGE_DA4R_TEST_LOCALLY in AppBundle for DA4R deployment
 //
 [assembly: AssemblyVersion( "2019.0.1.1" )]
 [assembly: AssemblyFileVersion( "2019.0.1.1" )]
