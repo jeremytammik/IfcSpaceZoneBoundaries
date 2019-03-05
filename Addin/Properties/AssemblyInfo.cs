@@ -69,6 +69,8 @@ using System.Runtime.InteropServices;
 // 2019-02-26 2019.0.1.0 add level and area in square meters
 // 2019-02-26 2019.0.1.0 implemented Util.GetLevelName
 // 2019-02-26 2019.0.1.0 completed level and area export implementation
+// 2019-02-26 2019.0.1.0 implemented support for CSV output file path in user defined settings
+// 2019-03-05 2019.0.1.1 implemented GetSortedLevels
 //
-[assembly: AssemblyVersion( "2019.0.1.0" )]
-[assembly: AssemblyFileVersion( "2019.0.1.0" )]
+[assembly: AssemblyVersion( "2019.0.1.1" )]
+[assembly: AssemblyFileVersion( "2019.0.1.1" )]

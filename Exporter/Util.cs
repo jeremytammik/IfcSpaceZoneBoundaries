@@ -378,6 +378,18 @@ namespace IfcSpaceZoneBoundaries.Exporter
         ? ps[0].AsString()
         : null;
     }
+
+    /// <summary>
+    /// Retrieve all levels sorted by elevation
+    /// </summary>
+    IOrderedEnumerable<Level> GetSortedLevels( 
+      Document doc )
+    {
+      return new FilteredElementCollector( doc )
+        .OfClass( typeof( Level ) )
+        .Cast<Level>()
+        .OrderBy( lev => lev.Elevation );
+    }
     #endregion // Element Data Accessors
 
     #region Geometry Extraction

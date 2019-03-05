@@ -63,7 +63,12 @@ namespace IfcSpaceZoneBoundaries.Exporter
         + "and spaces from {0} direct shapes.",
         col.GetElementCount() ) );
 
-      path = Path.ChangeExtension( path, "csv" );
+      path = JtSettings.Instance.CsvOutputFilePath;
+
+      if( null == path || 0 == path.Length )
+      {
+        path = Path.ChangeExtension( path, "csv" );
+      }
 
       int n = 0;
 
