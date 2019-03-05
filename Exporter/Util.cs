@@ -288,7 +288,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// Convert a given length in square feet 
     /// to square metres.
     /// </summary>
-    public static double SquareFootToSquareMeter( 
+    public static double SquareFootToSquareMeter(
       double area )
     {
       return _sqfToSqm * area;
@@ -332,7 +332,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
 
     #region Element Data Accessors
     /// <summary>
-    /// Retrun the name of the level of the given element.
+    /// Return the name of the level of the given element.
     /// </summary>
     public static string GetLevelName(
       Element e,
@@ -403,7 +403,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Retrieve all levels sorted by elevation
     /// </summary>
-    public static IOrderedEnumerable<Level> GetSortedLevels( 
+    public static IOrderedEnumerable<Level> GetSortedLevels(
       Document doc )
     {
       return new FilteredElementCollector( doc )
@@ -420,7 +420,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Return the bottom horizontal face, if found, or null
     /// </summary>
-    static PlanarFace GetBottomHorizontalFace( 
+    static PlanarFace GetBottomHorizontalFace(
       GeometryElement geo )
     {
       PlanarFace bottom_face = null;
@@ -437,7 +437,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
 
             if( null != pf
               && IsHorizontal( pf )
-              && (null == bottom_face 
+              && ( null == bottom_face
                 || bottom_face.Origin.Z > pf.Origin.Z ) )
             {
               bottom_face = pf;
@@ -451,12 +451,12 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// <summary>
     /// Return the vertices from a face edge loop
     /// </summary>
-    static List<XYZ> GetEdgeLoopVertices( 
+    static List<XYZ> GetEdgeLoopVertices(
       EdgeArray loop )
     {
       if( 1 > loop.Size )
       {
-        throw new ArgumentException( 
+        throw new ArgumentException(
           "empty top face loop" );
       }
 
@@ -494,7 +494,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// Return the vertices from the first 
     /// and only face edge loop
     /// </summary>
-    static List<XYZ> GetFirstEdgeLoopVertices( 
+    static List<XYZ> GetFirstEdgeLoopVertices(
       PlanarFace f )
     {
       EdgeArrayArray loops = f.EdgeLoops;
@@ -522,7 +522,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
     /// Prepend the face's area in square meters and its
     /// Z elevation coordinate, comma-separated.
     /// </summary>
-    public static string GetBottomFaceBoundaryStringZArea( 
+    public static string GetBottomFaceBoundaryStringZArea(
       Element e,
       out double z,
       out double area )
@@ -546,7 +546,7 @@ namespace IfcSpaceZoneBoundaries.Exporter
         //  Util.SquareFootToSquareMeter( 
         //    bottom_face.Area ) );
 
-        List<XYZ> vertices = GetFirstEdgeLoopVertices( 
+        List<XYZ> vertices = GetFirstEdgeLoopVertices(
           bottom_face );
 
         s = XyzListTo2dPointString( vertices );

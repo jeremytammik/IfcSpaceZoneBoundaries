@@ -73,6 +73,7 @@ using System.Runtime.InteropServices;
 // 2019-03-05 2019.0.1.1 implemented GetSortedLevels, get area and elevation as double, determine level from elevation
 // 2019-03-05 2019.0.1.1 successful local test of level and area export
 // 2019-03-05 2019.0.1.1 undefine FORGE_DA4R_TEST_LOCALLY in AppBundle for DA4R deployment
+// 2019-03-05 2019.0.1.2 cleanup for publication
 //
-[assembly: AssemblyVersion( "2019.0.1.1" )]
-[assembly: AssemblyFileVersion( "2019.0.1.1" )]
+[assembly: AssemblyVersion( "2019.0.1.2" )]
+[assembly: AssemblyFileVersion( "2019.0.1.2" )]
