@@ -126,13 +126,9 @@ This process creates an intermediate file with a filename extension `.ifc.RVT`.
 
 Apparently, DA4R currently does not support IFC processing, so the call to this method may have to be moved to the desktop.
 
-However, the `.ifc.RVT` file can presumably be uploaded to Forge and processed by DA4R.
+However, the `.ifc.RVT` file can be uploaded to Forge and processed by DA4R.
 
-
-## <a name="todo"></a>To Do
-
-- Test reading the data directly from the intermediate `.ifc.RVT` file
-- Convert to DA4R
+The required data can be read directly from the intermediate `.ifc.RVT` file.
 
 
 ## Author
